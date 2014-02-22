@@ -1,0 +1,5 @@
+safe: true
+lsi: false
+pygments: true
+source: /home/sirosen/
+baseurl: "http://sirosen.github.io/"

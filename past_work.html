@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<h1><a name="manticore" class="anchor" href="#manticore"><span class="octicon octicon-link"></span></a>Manticore</h1>
+
+<p><a href="http://manticore.cs.uchicago.edu/">The Manticore Project</a>
+is a parallel programming language project at the University of Chicago.
+All of the source code is freely available via SVN, and the project's page provides detailed explanation.
+If you're interested in learning more, I strongly recommend starting with
+<a href="http://manticore.cs.uchicago.edu/papers/icfp08-implicit.pdf">This Paper</a>,
+which describes Parallel ML, Manticore's source language, and its possible applications.</p>
+
+<p>In Winter of 2010-2011, after taking the University of Chicago's Operating Systems course, I had an interest in scheduling algorithms.
+I asked Professor Reppy about the possibility of working on similar problems in the Manticore project, and got started in a few months on working, under the supervision of Lars Bergstrom, on modifying thread scheduling in Manticore.
+I worked in Manticore's primcode, an SML dialect used to express some low-level details of the run-time system, modifying Manticore to use a scheduling algorithm developed by Professor Reppy for CML.
+The scheduler, with these modifications, now classifies threads as computationally intensive or IO bound, and prioritizes processor time given to computational threads.</p>
+
+<p>From 2011 to 2013, I worked with Adam Shaw on implementing a fully fledged form of his dissertation research on data structure flattening.
+We did not deeply investigate the field of arbitrary data structure flattening, but worked primarily on nested array flattening.
+We generalized segmented summations into segmented reductions, and hooked segmented reduce into the compiler to show that under Adam Shaw's flattening transform, dense matrix operations -- a typical failing point for array flattening -- did not suffer a significant performance loss.
+The paper produced from this work,
+<a href="http://manticore.cs.uchicago.edu/papers/ppopp13-flat.pdf">Data-Only Flattening</a>,
+demonstrates the results of running the flattening transform on data structures without any transformations on the code manipulating those structures.
+I keep a small GitHub repository,
+<a href="https://github.com/sirosen/Proto_FT">Proto_FT</a>
+in which I attempted to formalize flattening on arbitrarily nested arrays and tuples, one of the sticking points in the existing Manticore flattening transforms.</p>
+
+
+<h1><a name="csil" class="anchor" href="#csil"><span class="octicon octicon-link"></span></a>Computer Science Instructional Laboratories</h1>
+
+<p><a href="http://csil.cs.uchicago.edu/">The CSIL</a>
+is the Computer Science department's computer laboratory at the University of Chicago, located in the
+<a href="http://www.lib.uchicago.edu/e/crerar/about.html">John Crerar Science Library</a>.
+In the Spring of 2010, I began working in the (almost) entirely student-run laboratory, manning the lab's help desk.
+Over time, as most CSIL employees do, I took on more system administration responsibilities, helping run virtual machines on hardware using Parallels and, later, VMWare.
+In my time there, I took part in major improvements to the CSIL's inventory system, internal web services, and documentation efforts, and aided the lab through two migrations: one in virtualization infrastructure from Parallels to VMWare, and the other in location from it's prior space in the <a href="http://www.lib.uchicago.edu/e/reg/">Joseph Regenstein Library</a>.
+</p>
+
+<p>In 2012, having worked on a variety of systems within the laboratory, my focus shifted more towards Dev Ops, specifically automation and monitoring of our user-facing workstations.
+The lab is now largely administered through the (unfortunately closed source) toolkit that I developed on top of <a href="http://docs.fabfile.org">Fabric</a>.
+Due to design flaws with Fabric, I have advocated the eventual replacement of this system.
+</p>
+
+<p>After I graduated from the university in Spring 2013, I retained a fairly close connection with the laboratory.
+I have given advice on any issues or projects that I had expertise in, and have since helped reform the lab's interview procedures.
+At present, I help the CSIL in my spare time, but do no development or administration work for them.
+</p>
