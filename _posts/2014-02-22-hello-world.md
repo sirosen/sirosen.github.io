@@ -1,6 +1,5 @@
 ---
-layout: default
-title: Hello, World
+layout: post
 ---
 
 Hello, GitHub Pages
