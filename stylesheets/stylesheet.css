@@ -22,6 +22,11 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+em, i { font-style: italic; }
+strong, b { font-style: bold; }
+sub, sup { font-size: 75%; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
