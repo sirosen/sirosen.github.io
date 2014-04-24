@@ -2,8 +2,9 @@
 layout: post
 ---
 
-####Collaborators####
+<div class="opening-notes"><h4>Collaborators</h4>
 Written in collaboration with Josh Schwartz.
+</div>
 
 UNDER CONSTRUCTION
 ==================
@@ -79,26 +80,25 @@ But before we dive in deeply into the peculiarities of these bugs, we’re going
 The next few sections will be about basic cryptography.
 They’ll help give some perspective about what happened, who is responsible, and what you, as a user of web sites and services, should do to protect yourself.
 
-Terms: SSL and TLS
-------------------
+<div class="textbox">
+<h2>What’s SSL? What’s TLS?</h2>
 
-For our purposes, there is no meaningful distinction between the Secure Sockets Layer (SSL) and Transport Layer Security (TLS).
+<p>For our purposes, there is no meaningful distinction between the Secure Sockets Layer (SSL) and Transport Layer Security (TLS).
 The two are names for the same type of security, although TLS generally is only used to refer to later versions of SSL.
-TLS version 1.0 is a refinement of SSL 3.0, [standardized by IETF](http://tools.ietf.org/html/rfc2246 "RFC 2246") in 1999, sometimes refered to as SSL version 3.1, and the taxonomy of these protocols is generally a mess.
+TLS version 1.0 is a refinement of SSL 3.0, <a href="http://tools.ietf.org/html/rfc2246" title="RFC 2246">standardized by IETF</a> in 1999, sometimes refered to as SSL version 3.1, and the taxonomy of these protocols is generally a mess.
 Names used include SSL, TLS, SSL/TLS, and sometimes, very incorrectly, HTTPS (HTTPS is actually just a name for HTTP secured with SSL/TLS), and we may use any of the three correct variants.
-They all mean the same thing.
+They all mean the same thing.</p>
 
-What matters for us is that this is the standard for protecting traffic on the web, in particular over the Hypertext Transfer Protocol Secure (HTTPS).
+<p>What matters for us is that this is the standard for protecting traffic on the web, in particular over the Hypertext Transfer Protocol Secure (HTTPS).
 This is the security standard used by every browser to talk to webservers and pull up private data like email, bank accounts, and tax filings.
-SSL/TLS refers to the use of these protocols to protect data, and the fact that they have been compromised means that everything from your Google password to your bank PIN are at risk.
-We will discuss two implementations of this type of security, OpenSSL and GnuTLS, but for our purposes the only difference between them is the percentage of browsers and webservers using them.
+SSL/TLS refers to the use of these protocols to protect data, and the fact that they have been compromised means that everything from your Google password to your bank PIN are at risk.</p>
 
-SSL/TLS Has Not Been Mathematically "Broken"
---------------------------------------------
+<h2>SSL/TLS Has Not Been Mathematically "Broken"</h2>
 
-One of the careful distinctions that we have to make here is that SSL/TLS has not been proven to be insecure in their design, or had the underlying mathematics proven incorrect.
+<p>One of the careful distinctions that we have to make here is that SSL/TLS has not been proven to be insecure in their design, or had the underlying mathematics proven incorrect.
 There is a great deal of comfort we can take from this, as it means that it is possible that the patched versions of GnuTLS and OpenSSL are secure.
-It is equally possible that they contain more crippling bugs, but the *idea* of SSL/TLS still appears to be correct, as long as it is implemented correctly.
+It is equally possible that they contain more crippling bugs, but the <i>idea</i> of SSL/TLS still appears to be correct, as long as it is implemented correctly.</p>
+</div>
 
 What is Cryptography, Anyway?
 =============================
@@ -588,8 +588,8 @@ The short answer is "nothing".
 It has become clear that Heartbleed can be used to obtain a server's private key, which allows decryption of any past or future traffic which uses the matching certificate for encryption.
 The only information safe from Heartbleed, therefore, is data which has never passed over an OpenSSL encrypted channel in which the end-server is relying on an affected version of OpenSSL for encryption.
 
-In practical terms, you can't do anything to protect your SSN, address, or phone number if they may have been exposed.
-The only proactive step available is to change your passwords for any websites that were affected.
+In practical terms, you can't do anything to protect your SSN, address, or phone number if they have been exposed.
+The only proactive step available is to change your passwords for any websites that were affected but are now secure.
 
 The exception is for any service that has been practicing Perfect Forward Secrecy, in which no all communications are protected by a shared secret determined using Diffie-Hellman on top of OpenSSL's encryption.
 This technique prevents decryption of past communications in the event that the server's private key is exposed.
@@ -603,3 +603,25 @@ How did Heartbleed Get Into the Wild?
 You might be thinking "Heartbleed sounds really, really bad!"
 If so, you would be entirely correct.
 So how did such a dangerous bug make it not only into the OpenSSL codebase, but onto tens of thousands of servers?
+
+###Why Have Heartbeats Self-Report Length?###
+
+Every heartbeat request includes the length of its message, but we've mentioned before that a server needs to check that this is correct.
+An obvious question that this raises is "if this can be checked elsewhere, why include it at all?"
+In truth, the inclusion of message length is less brain-dead than it sounds -- it's a necessary part of a clever networking trick called "piggybacking."
+
+The basic idea of piggybacking is to send two messages packaged together, like including two letters in one envelope.
+A request might look something like this:
+
+<pre><code>Heartbeat Request.
+Message Length: 15.
+Please reply with my message:
+"This is an echo!"
+
+Basic Authentication Request.
+Username Length: 7
+Password Length: 6
+Username: vizzini
+Password: iocane</code></pre>
+
+The replies can be piggybacked together, or sent separately, but note that an authentication request might

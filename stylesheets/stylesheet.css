@@ -261,6 +261,7 @@ pre {
   overflow: auto;
   border: solid 1px #f2f2f2;
 }
+
 pre code {
   color: #2879d0;
   background-color: #fff;
@@ -268,10 +269,23 @@ pre code {
   padding: 0;
 }
 
+div .textbox {
+  font-family: Helvetica, Terminal, monospace;
+  color: #111;
+  background-color: #C2D1FF;
+  font-size: 12px;
+  border: solid 2px #B0C0FF;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+div.opening-notes {}
+
 ul, ol, dl {
   margin-bottom: 20px;
 }
-
 
 /* COMMON STYLES */
 
@@ -336,6 +350,14 @@ form {
   margin-left: -1.5em;
 }
 
+#main-content div.textbox h2:before {
+    content: "";
+}
+#main-content div.textbox h2 {
+    text-align: left;
+    margin-left: 20px;
+}
+
 #main-content h3 {
   font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; 
   font-size: 18px;
@@ -359,11 +381,17 @@ form {
   color: #474747;
 } 
 
-h4:before {
+#main-content h4:before {
   content: "////";
   color: #9ddcff;
   padding-right: 0.3em;
   margin-left: -2.8em;
+}
+
+#main-content div.opening-notes h4 {
+}
+#main-content div.opening-notes h4:before {
+    content "";
 }
 
 #main-content h5 {
