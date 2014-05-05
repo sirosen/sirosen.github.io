@@ -4,10 +4,26 @@ layout: default
 
 <h1><a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code</h1>
 
-<p>This resume is scrapped from GitHub (raw), and displayed using the Google Docs embeddable pdf viewer.
-It is therefore kept reasonably well up to date, and will have updates applied as early as possible.
+<p>This resume is scrapped from GitHub, and displayed in the form of a png.
+The png is rendered with ImageMagick from a pdf as part of my compilation process.
+I previously used the Google Docs embeddable viewer, but there are nasty secrets to the viewer relating to per-account bandwidth capping.</p>
+
+<p>It is therefore kept reasonably well up to date, and will have updates applied as early as possible.
 Please feel free to use <a href="https://github.com/sirosen/OpenResume">the source</a> as a template for your own LaTeX Resume or CV.</p>
+
+<p>I have been considering transforming this resume to Markdown, in which case I will want to work out some kind of templating so that both Markdown and LaTeX can be built from the same source.
+Most likely, the resume content will be stored in JSON format, and templated with Jinja or Mustache.
+If I perform this work, I will attempt to add some kind of generic document on this page about how I produced the source for different resume forms.</p>
 
 <h1><a name="resume" class="anchor" href="#resume"><span class="octicon octicon-link"></span></a>Resume</h1>
 
-<iframe src="http://docs.google.com/gview?url=https://github.com/sirosen/OpenResume/blob/master/resume.pdf?raw=true&embedded=true" style="width:700px; height:920px;" frameborder="1"></iframe>
+<img src="https://raw.githubusercontent.com/sirosen/OpenResume/master/resume.png" width="700px" height="920px">
+
+<h1><a name="never-doc" class="anchor" href="#never-doc"><span class="octicon octicon-link"></span></a>This Resume Will Never Be A .doc File</h1>
+
+<p>I flatly refuse to ever convert this document into a .doc, .docx, .odt, or other Word-friendly format.</p>
+
+<p>I dislike the Document Editor formats for a resume because a resume is about presentation, and Document Editors are about modifying text.
+As a result, .doc editors compromise the consistency of their rendition of a document, and there is no guarantee that a document appears on the destination as it appears on my own machine.
+I've very carefully crafted my resume to look exactly how I want it to, and agonized over it giving the correct visual impression to companies reading it.
+There's no particular advantage to a .doc over a .pdf, but there are certainly risks and disadvantages.</p>
