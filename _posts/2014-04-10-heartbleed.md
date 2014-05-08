@@ -103,31 +103,47 @@ It is equally possible that they contain more crippling bugs, but the <i>idea</i
 What is Cryptography, Anyway?
 =============================
 
-"Cryptography" is a word that gets thrown around a lot, but which is very rarely explained in layman's terms.
-This is somewhat surprising, since cryptography is simply an art and mathematics of making information available only to the people who should have access to it.
-That description is a more general notion of Information Security, and cryptography in particular revolves around finding ways of making proofs of identity -- often called "credentials" or "keys" -- necessary in order to read a message.
-Simple as an idea, but complex in practice.
+(Skip this section if you just want to get to the technical bits)
 
-The core challenge of the field, therefore, is to take a message and a target recipient, and produce a new message which is safe to expose in public.
-The original message cannot be derived from the alternate message without using a credential possessed only by the intended recipient; this is what guarantees safety and privacy.
+No, seriously, what is it?
+The word gets thrown around a lot, but is rarely explained.
+There really should be no mystery: cryptography is simply the art (and the mathematics) of making information available only to the people who should have access to it.
+
+More specifically, cryptography focuses on finding ways of making proofs-of-identity -- often called "credentials" or "keys" -- necessary in order to read a message.
+It’s a simple idea, but can be complex in practice.
+Still, if everything works properly, a message that has been encrypted should be safe to expose to the public.
+It should only be decipherable by the intended recipient, who has the appropriate credentials to decode it.
 
 Cryptography in the Stone Age
 -----------------------------
 
-As phrased, there is nothing restricting cryptography to modern methods.
-Although "Stone Age" may be a slight exaggeration, cryptography has been possible since the dawn of written language.
-To illustrate, we will consider the example of a Caesarian Cipher, so-called because it was, supposedly, used to relay messages amongst officers of the Roman Empire.
+Although "Stone Age" may be a bit of an exaggeration, cryptography has been around for a very, very long time.
+Romans may have used it to relay messages between officers of the Roman Empire; the Ceasarian cipher, a common cryptographic method, was so named ostensibly because it was frequently used by Julius Caesar himself.
 
-A Caesarian Cipher with the 26 letter Latin alphabet uses an integer between 1 and 25 to encode and decode text.
-The simplest way to desscribe this process is as a "shift" on the alphabet.
-If the integer is 5, then we shift every letter in the alphabet like so:
+Fortunately for us, the Ceasarian cipher is pretty easy to understand (many of Caesar’s potential eavesdroppers were illiterate, so strong security probably wasn’t a high priority), and so it makes a good introduction to the subject.
+
+Basically, a Caesarian cipher works by shifting every alphabet letter in a message to another letter.
+Every letter is shifted by the same amount: if the letter A is shifted five letters to the right to become F, then the letter B is also shifted five to the right, to become G.
+So eventually, the entire alphabet looks like this:
 
 <pre><code>ABCDEFGHIJKLMNOPQRSTUVWXYZ
 FGHIJKLMNOPQRSTUVWXYZABCDE</code></pre>
 
-We encode "A" as "F", "B" as "G", and so forth, and likewise decode "F" as "A", et cetera.
-If we have a message, "ATTACK AT DAWN", it can be encoded as "FYYFHP FY IFBS".
-When someone receives the message, he can just shift everything back by 5 in order to recover the original text.
+That is, if we used "5" as our shifting number; every letter has been shifted to the right by five.
+Sounds complicated?
+It’s really not.
+
+Take this (perhaps historically viable!) sentence:
+
+ATTACK AT DAWN
+
+If it has been encoded with our own Caesarian cipher, it will appear as:
+
+FYYFHP FY IFBS
+
+When someone receives the message, he can just shift everything back by five in order to recover the original meaning.
+Caesarian ciphers don’t have to shift by five, of course -- they can shift by any number between 1 and 25 (after which the alphabet loops back around).
+So our attack orders could also be "GZZGIV GZ JGCT" or "HAAHJW HA KHDU," if we chose six or seven, rather than five, as our shifting value.
 
 ###Breaking a Caesarian Cipher###
 
@@ -143,9 +159,9 @@ The original message reads
 > Sxdy dro fkvvoi yp Nokdr<br />
 > Byno dro csh rexnbon.
 
-To decipher the message, knowing that it is protected with a Caesarian Cipher, all you need to do is guess the correct shift value -- and there are only 25 of those of interest.
-It is simple enough to write a program that does this in the modern world, but even guessing with pen and paper it should be easy enough to figure out.
-If you write a small program to do this, you would find that with a shift value of -10, the message decodes to the first verse of *The Charge of the Light Brigade*:
+To decipher the message, assuming (or even better, somehow knowing) that it is protected with a Caesarian cipher, all you need to do is guess the correct shift value -- and there are only 25 to guess from.
+A computer can do this easily, but honestly, it’s not too hard for a human, either.
+If you write a small program to do this (or use a pen and paper), you would find that with a shift value of -10, the message decodes to the first verse of *The Charge of the Light Brigade*:
 
 > Half a league, half a league,<br />
 > Half a league onward,<br />
@@ -156,34 +172,39 @@ If you write a small program to do this, you would find that with a shift value 
 > Into the valley of Death<br />
 > Rode the six hundred.
 
-So I must have encoded it with a shift value of +10 in the first place.
+So our surprisingly literary message-writer must have encoded his message with a shift value of +10.
 
-It is therefore reasonable to say that Caesarian Ciphers are not valuable for security, but breaking encryption is no longer so easy.
-More on this when we discuss what it would take to break the mathematics underlying SSL/TLS.
+It's pretty clear from the above that Caesarian ciphers aren’t particularly secure, but we’ve come a long way since then!
+Also, our enemies are literate, and necessity is the mother of invention.
+Breaking encryption is no longer so easy.
 
-Terms: Key, Credential, and Token
----------------------------------
+<div class="textbox">
+<h2>Terms: Key, Credential, and Token</h2>
 
-The words "key", "credential", and "token" all refer to proofs of identity.
-There are subtle differences between these, and specific connotations, but for the purposes of this document they are all the same.
+<p>The words "key", "credential", and "token" all refer to proofs-of-identity.
+There are subtle differences between these, but for our purposes they are all the same.</p>
+</div>
 
 Bob and Alice: Protecting Messages
 ----------------------------------
 
-When talking about cryptography, computer scientists often use a common analogy of two people who want to send messages whose content is kept private.
-These two people are always named "Bob" and "Alice", and they are always trying to conceal their information from an eavesdropper named "Eve".
-Here's the scenario in one of its typical forms:
+When talking about cryptography, computer scientists often use a convoluted story about two people who want to send private messages.
+These two people are always named Bob and Alice for some reason, and they are always trying to conceal some information from an eavesdropper named Eve (yup, for [eavesdropper](https://www.youtube.com/watch?v=mgIsd7q0SI4)).[^punny]
+Here’s the scenario in one of its typical forms:
 
-Bob and Alice are neighbors, but they never speak to one another.
-Instead, Bob and Alice exchange written notes, left in one another's mailboxes, but they want the information in these notes to be private, in particular from Eve.
-How can they achieve privacy of information when the note contents themselves are publicly available?
-Eve could take the mail from their mailboxes and copy it with or without Bob or Alice knowing, and they may or may not be able to detect that she has opened and read a message.
+Bob and Alice are neighbors, but they never speak to one another, because apparently they are mute.
+Instead, Bob and Alice exchange written notes, left in one another's mailboxes.
+They want the information in these notes to be private, especially from Eve, who they think might be trying to read their correspondence.
+How can they maintain their privacy when the note contents themselves are publicly available?
+Eve could take the mail from their mailboxes and copy it with or without Bob or Alice knowing; they may or may not be able to detect that she has opened and read a message.
 
-Bob and Alice are analogues for a webserver, some website that you use, and browser, in this scenario.
+Bob and Alice are analogues for a website (more accurately, a web server), and an internet browser.
 Just like Bob and Alice, your browser and the servers for CitiBank, Netflix, Google, and many other sites want to exchange information securely.
-In order to achieve this kind of security, both the servers and the browser -- analogously, both Bob and Alice -- will have to agree on a standard set of procedures for protecting information.
-This set of procedures, a protocol, needs to be publicly known, so that anyone can use it, and it needs to operate even though the messages might be intercepted and copied.
-The procedure in use, therefore, is also public information.
+In order to achieve this kind of security, both the servers and the browser will have to agree on a standard set of procedures for protecting information.
+This set of procedures, known as a protocol, has to be publicly available so that anyone can use it, and it needs to operate even though the messages might be intercepted and copied; a Caesarian cipher is an example of a basic protocol.
+The nature of the protocol is therefore also public information, and that only makes things harder.
+
+[^punny]: Puns are actually the death of wit.
 
 ###Solution 1: Shared Secret###
 
