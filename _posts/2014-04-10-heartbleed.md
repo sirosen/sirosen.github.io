@@ -208,55 +208,58 @@ The nature of the protocol is therefore also public information, and that only m
 
 ###Solution 1: Shared Secret###
 
-Shared secret cryptography, often called "symmetric cryptography", is the simplest solution to this problem, and what you would likely do if you were really in Bob and Alice's situation.
-It is a type of cryptography in which there is a piece of information known only to Bob and Alice which is used to protect information.
-That secret is exchanged by another means before the communication begins.
-For example, if Bob and Alice meet once before beginning to leave one another notes, and agree on a Caesarian Cipher, then the shared secret is the choice of how much to shift text.
-In this scenario, the publicly known standard would be the general principle of a Caesarian Cipher.
+Shared secret cryptography, often called "symmetric cryptography", is the simplest solution to Bob and Alice’s conundrum.
+Using shared secret cryptography, Bob and Alice would use a piece of information only known to themselves to protect their information.
+That information -- the shared secret -- would have to be exchanged by some other means before the secure communication begins.
 
-Unfortunately, there is one major, crippling flaw with symmetric cryptography: communication of the shared secret.
-In order to safely share that secret, some secure communication needs to already be possible.
-For Bob and Alice, meeting in person constitutes that secure exchange of information, but there is no equivalent for your browser communicating with a webserver.
-It is therefore necessary to constrain Bob and Alice further: they may never talk to one another, and only ever send one another notes.
-From the very first steps, their communications are at risk of being intercepted.
-There are ways around this -- most notably through the technique of [Diffie-Hellman key exchange](http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) -- but in practice shared secrets are not used as often as some other techniques.
+For example, if Bob and Alice met once and agree on a Caesarian Cipher before beginning to exchange mail, then the shared secret would the choice of how much to shift text.
+In this scenario, the protocol employed would be the Caesarian Cipher.
 
-Shared secrets do, however, share an important property with client-server interactions.
-Consider what happens if Eve intercepts every message sent between Bob and Alice, and keeps them, even without being able to decipher them and at a later date obtains the shared secret.
-Once Eve has the shift value for the Caesarian Cipher, then she will be able to decipher all past messages sent between Bob and Alice, including any other secure information exchanged under the cipher like passphrases.
-In this scenario, the shared secret is very similar to the type of information that was exposed by the Heartbleed OpenSSL bug.
+But there’s a problem: Bob and Alice can meet in person, but your browser and a web server can’t.
 
-####Aside: The Duffman-Whoguy What Exchange?####
+More broadly, in order to safely communicate a shared secret, some secure means of communication needs to already be possible, and that constraint is exactly as circular as it sounds.
+So we’ll need to restrict poor Bob and Alice a bit further: now, they can never meet; they can only send one another notes.
+From the very beginning, their communications are at risk of being intercepted.
+And using shared secret cryptography, their challenge is now  largely insurmountable.[^DHE]
 
-Diffie-Hellman Key Exchange, often abbreviated to Diffie-Hellman or even DH, is a technique developed by Whitfield Diffie and Martin Hellman in a paper in 1976.
+[^DHE]: There are ways -- most notably the [Diffie-Hellman key exchange](http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)
+
+<div class="textbox">
+<h4>Aside: The Duffman-Whoguy What Exchange?</h4>
+
+<p>Diffie-Hellman Key Exchange, often abbreviated to Diffie-Hellman or even DH, is a technique developed by Whitfield Diffie and Martin Hellman in a paper in 1976.
 Understanding Diffie-Hellman will be important later, when we discuss Perfect Forward Secrecy -- a technique that relies on the key exchange algorithm.
-We present DH below, but first we will lay a foundation of simple arithmetic processes.
+We present DH below, but first we will lay a foundation of simple arithmetic processes.</p>
 
-To read the procedure, you need familiarity with the "modulus" operation, which given `a` and `b` is defined: `a modulo b` equals the remainder of `a/b`.
+<p>To read the procedure, you need familiarity with the "modulus" operation, which given <code>a</code> and <code>b</code> is defined: <code>a modulo b</code> equals the remainder of <code>a/b</code>.
 The important thing to note about modulus is that if you apply it before and after an arithmetic operation or just afterwards, you get the same result.
-That is, `(a+1) modulo b` is precisely the same as `((a modulo b) + 1) modulo b`, and likewise for subtraction, multiplication, division, and exponentiation.
-Another way to think of it is that if we view the entire world of integers through the lens of a modulus, pretty much all of your beliefs about arithmetic hold true, although there are some notable exceptions like `(a*b) modulo b = 0`.
-Typically, mathematicians and computer scientists are interested in the case where `b` is prime, since that precludes the possibility of there being two numbers `a < b` and `c < b` such that `(a*c) modulo b = 0`.
+That is, <code>(a+1) modulo b</code> is precisely the same as <code>((a modulo b) + 1) modulo b</code>, and likewise for subtraction, multiplication, division, and exponentiation.
+Another way to think of it is that if we view the entire world of integers through the lens of a modulus, pretty much all of your beliefs about arithmetic hold true, although there are some notable exceptions like <code>(a*b) modulo b = 0</code>.
+Typically, mathematicians and computer scientists are interested in the case where <code>b</code> is prime, since that precludes the possibility of there being two numbers <code>a < b</code> and <code>c < b</code> such that <code>(a*c) modulo b = 0</code>.</p>
 
-With a basic understanding of modulus under our belts, onwards to the key exchange procedure.
-In brief, this is the procedure for DH between Alice and Bob,
+<p>With a basic understanding of modulus under our belts, onwards to the key exchange procedure.
+In brief, this is the procedure for DH between Alice and Bob,</p>
 
-  - Alice and Bob agree in public on a large prime number, `p`
-  - Alice and Bob agree in public on a number `n` which is less than `p`
-  - Alice chooses a secret number `x` and Bob chooses a secret `y`, which are never shared (even with one another)
-  - Alice sends Bob `n^x modulo p` and Bob sends Alice `n^y modulo p`
-  - Alice and Bob each raise the values they received to their chosen secrets, modulo `p`
-    - Alice produces `(n^y modulo p)^x modulo p = n^y^x modulo p`
-    - Bob produces `(n^x modulo p)^y modulo p = n^x^y modulo p`
-  - These final values are equivalent because `n^x^y = n^y^x`, so Bob and Alice use them as the shared secret
+<ol>
+  <li>Alice and Bob agree in public on a large prime number, <code>p</code></li>
+  <li>Alice and Bob agree in public on a number <code>n</code> which is less than <code>p</code></li>
+  <li>Alice chooses a secret number <code>x</code> and Bob chooses a secret <code>y</code>, which are never shared (even with one another)</li>
+  <li>Alice sends Bob <code>n^x modulo p</code> and Bob sends Alice <code>n^y modulo p</code></li>
+  <li>Alice and Bob each raise the values they received to their chosen secrets, modulo <code>p</code></li>
+  <ol>
+    <li>Alice produces <code>(n^y modulo p)^x modulo p = n^y^x modulo p</code></li>
+    <li>Bob produces <code>(n^x modulo p)^y modulo p = n^x^y modulo p</code></li>
+  </ol>
+  <li>These final values are equivalent because <code>n^x^y = n^y^x</code>, so Bob and Alice use them as the shared secret</li>
+</ol>
 
-An important note is that all communication between Alice and Bob is considered to be public during the key exchange.
-The public information, therefore, includes `n`, `p`, `n^x modulo p`, and `n^y modulo p`.
-However, an attacker would have to deduce `x` and `y` from this information in order to compromise the shared secret, and this, as it turns out, is a very hard problem known as the Discrete Logarithm Problem.
+<p>An important note is that all communication between Alice and Bob is considered to be public during the key exchange.
+The public information, therefore, includes <code>n</code>, <code>p</code>, <code>n^x modulo p</code>, and <code>n^y modulo p</code>.
+However, an attacker would have to deduce <code>x</code> and <code>y</code> from this information in order to compromise the shared secret, and this, as it turns out, is a very hard problem known as the Discrete Logarithm Problem.</p>
 
-DH is cryptographically sound and strong, but in practice it relies on the security of both Bob and Alice.
-If someone obtains the shared secret from Alice or Bob, not necessarily both, then the entire communication is compromised.
-There is an alternative...
+<p>DH is cryptographically sound and strong, but in practice it relies on the security of both Bob and Alice.
+If someone obtains the shared secret from Alice or Bob, not necessarily both, then the entire communication is compromised.</p>
+</div>
 
 ###Solution 2: Public and Private Keys###
 
