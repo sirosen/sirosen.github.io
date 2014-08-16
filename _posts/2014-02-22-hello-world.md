@@ -18,7 +18,8 @@ Apparently the `<meta>` tag can sometimes be ignored, and since javascript may b
 The next best solution is to try everything you can, and provide an explicit link, just in case.
 
 My old site at `http://people.cs.uchicago.edu/~sirosen/` now serves up the following HTML:
-```
+
+{% highlight html %}
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
@@ -33,7 +34,7 @@ My old site at `http://people.cs.uchicago.edu/~sirosen/` now serves up the follo
         If you are not redirected automatically, follow the <a href='http://sirosen.github.io/'>link to sirosen.github.io</a>
     </body>
 </html>
-```
+{% endhighlight %}
 
 When browsers ignore `<meta>`, they fail over to the javascript rewrite to `window.location`.
 This is still very responsive because the script is so small, and loading the target page through this redirect is seamless.

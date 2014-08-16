@@ -410,7 +410,7 @@ The original source code was inside of a check for certificate validity, and loo
 
 For the non-programmers and non-C programmers in the audience, this body of code has the following meaning:
 
-  * Set "result" to an integer computed by ```_gnutls_x509_get_signed_data```
+  * Set "result" to an integer computed by `_gnutls_x509_get_signed_data`
   * Check if "result" is less than 0, and if it is, use it as the result of the validity check
 
 But what does it mean if I ask "is this certificate valid?" and the code replies "-1"?
@@ -441,13 +441,13 @@ cleanup:
 
 Again, for those who aren't C programmers, the meaning of this code:
 
-  * Set "result" to an integer computed by ```_gnutls_x509_get_signed_data```
+  * Set "result" to an integer computed by `_gnutls_x509_get_signed_data`
   * Check if "result" is less than 0, and if it is, change it to 0
   * Use "result" as the result of the validity check
 
 This disagrees with the convention in the former piece of code.
 The trouble with GnuTLS is that it was using the wrong one of these conventions, considering a non-zero value to mean the certificate is valid, even though
-```_gnutls_x509_get_signed_data```
+`_gnutls_x509_get_signed_data`
 was using the convention that negative values mean that its invalid.
 
 The bug is subtle and easy to miss, and it occurred when GnuTLS was switching amongst these conventions for the meanings of integer results.
@@ -513,13 +513,13 @@ The OpenSSL server is sent a message of the form
 <pre><code>Heartbeat Request.
 Message Length: 15.
 Please reply with my message:
-"This is an echo!"</code></pre>
+This is an echo!</code></pre>
 
 and the server sends back a message
 
 <pre><code>Heartbeat Reply.
 Your message was:
-"This is an echo!"</code></pre>
+This is an echo!</code></pre>
 
 Programmers typically refer to this kind of interaction as an "echo server" because the server "echoes" the original message.
 
@@ -531,7 +531,7 @@ Imagine an ill-formed heartbeat request, something like
 <pre><code>Heartbeat Requestasdfasdf.
 Message Length: 15.
 Please reply with my message:
-"This is an echo!"</code></pre>
+This is an echo!</code></pre>
 
 Although to a human eye the intent is understandable, it's very, *very* hard to write code that reasons at such a high level.
 The safest behavior for the server is to note that "Heartbeat Requestasdfasdf" is not the same message type as "Heartbeat Request" and either refuse to reply or send back a message akin to
@@ -544,7 +544,7 @@ There are, however, more nefarious malformed requests which are harder to detect
 <pre><code>Heartbeat Request.
 Message Length: 5.
 Please reply with my message:
-"This is an echo!"</code></pre>
+This is an echo!</code></pre>
 
 The message length doesn't match the actual message, but that's much harder to catch.
 The server needs to check the total length of the request -- not included here, but available to OpenSSL -- and make sure that it's consistent with the declared message length.
@@ -552,7 +552,7 @@ If it fails to do so, it might send a message
 
 <pre><code>Heartbeat Reply.
 Your message was:
-"This "</code></pre>
+This </code></pre>
 
 instead of something more like
 
@@ -568,7 +568,7 @@ Consider the following request:
 <pre><code>Heartbeat Request.
 Message Length: 64000.
 Please reply with my message:
-"I'm not 64000 letters long."</code></pre>
+I'm not 64000 letters long.</code></pre>
 
 64000 bytes (one byte is one "character" or letter), 64 kilobytes, is the maximum length for a heartbeat message.
 
@@ -598,7 +598,7 @@ So the reply to the request above might look like
 
 <pre><code>Heartbeat Reply.
 Your message was:
-"I'm not 64000 letters long.LS0tCmxheW91dDogZGVmYXVsdAotLS0KPGgxPjxhIG5hbWU9ImFib3V0IiBjbGFz..."</code></pre>
+I'm not 64000 letters long.LS0tCmxheW91dDogZGVmYXVsdAotLS0KPGgxPjxhIG5hbWU9ImFib3V0IiBjbGFz...</code></pre>
 
 The data following the message I sent is not so much "random" as it is "unknown" data.
 It could be anything which was stored in memory in the past, but is not anymore.
@@ -638,9 +638,9 @@ The basic idea of piggybacking is to send two messages packaged together, like i
 A request might look something like this:
 
 <pre><code>Heartbeat Request.
-Message Length: 15.
+Message Length: 16.
 Please reply with my message:
-"This is an echo!"
+This is an echo!
 
 Basic Authentication Request.
 Username Length: 7
@@ -648,4 +648,40 @@ Password Length: 6
 Username: vizzini
 Password: iocane</code></pre>
 
-The replies can be piggybacked together, or sent separately, but note that an authentication request might
+The great benefit of doing this is that the flat costs of sending a request to
+the server -- the metaphorical equivalent of the postage stamp -- are only paid
+once, even though two requests are being made.
+
+The server receiving these requests knows the total length of the message that
+it received, but it doesn't know where in the messages sent the heartbeat
+request ends unless the heartbeat itself specifies how long its message is.
+
+Consider the following malformed version of the above request:
+
+<pre><code>Heartbeat Request.
+Message Length: 103.
+Please reply with my message:
+This is an echo!
+
+Basic Authentication Request.
+Username Length: 7
+Password Length: 6
+Username: vizzini
+Password: iocane</code></pre>
+
+The server will understand the message in the heartbeat request to have been
+
+<pre><code>This is an echo!
+
+Basic Authentication Request.
+Username Length: 7
+Password Length: 6
+Username: vizzini
+Password: iocane</code></pre>
+
+And why shouldn't it? Why can't the words "Basic Authentication Request" be
+part of the message?
+
+However, as long as the information sent back is limited by the total size of
+the packet or "envelope" received, the server can't be sending back information
+that the sender didn't already have.
