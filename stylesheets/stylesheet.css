@@ -388,10 +388,20 @@ form {
   margin-left: -2.8em;
 }
 
-#main-content div.opening-notes h4 {
+#main-content div.textbox h4:before {
+    content: "";
 }
+#main-content div.textbox h4 {
+    text-align: left;
+    margin-left: 20px;
+}
+
 #main-content div.opening-notes h4:before {
     content "";
+}
+#main-content div.opening-notes h4 {
+    text-align: left;
+    margin-left: 20px;
 }
 
 #main-content h5 {
