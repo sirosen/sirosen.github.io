@@ -393,7 +393,8 @@ That's something which is important to keep in mind when we shift our attention 
 Let's take a brief moment to investigate the exact cause of this bug.
 The original source code was inside of a check for certificate validity, and looked like this:
 
-<pre><code>    result =
+{% highlight C %}
+    result =
         _gnutls_x509_get_signed_data (issuer->cert, "tbsCertificate",
                                     &issuer_signed_data);
     if (result < 0)
@@ -406,7 +407,8 @@ The original source code was inside of a check for certificate validity, and loo
 
     cleanup:
         // cleanup type stuff
-        return result;</code></pre>
+        return result;
+{% endhighlight %}
 
 For the non-programmers and non-C programmers in the audience, this body of code has the following meaning:
 
@@ -421,7 +423,8 @@ The third and final way is "it's a nonzero value, so the certificate is invalid"
 
 Consider the patched version of the code:
 
-<pre><code>    result =
+{% highlight C %}
+    result =
         _gnutls_x509_get_signed_data (issuer->cert, "tbsCertificate",
                                     &issuer_signed_data);
     if (result < 0)
@@ -437,7 +440,8 @@ fail:
 
 cleanup:
     // cleanup type stuff
-    return result;</code></pre>
+    return result;
+{% endhighlight %}
 
 Again, for those who aren't C programmers, the meaning of this code:
 
