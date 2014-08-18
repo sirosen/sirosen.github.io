@@ -41,6 +41,12 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+em, i { font-style: italic; }
+strong, b { font-style: bold; }
+sub, sup { font-size: 75%; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
