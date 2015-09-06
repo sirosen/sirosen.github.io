@@ -31,6 +31,12 @@ header {
 .navbar .navbar-nav .open .dropdown-menu>li>a {
     color: #184AD0;
 }
+@media(max-width:767px){
+    .navbar .navbar-nav .dropdown-menu>li>a,
+    .navbar .navbar-nav .open .dropdown-menu>li>a {
+        color: #FFD700;
+    }
+}
 
 .navbar .navbar-brand img {
     max-height: 55px;
