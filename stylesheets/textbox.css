@@ -10,9 +10,6 @@ div .textbox {
   padding: 20px;
 }
 
-div.opening-notes {}
-
-
 #main-content div.textbox h2:before {
     content: "";
 }
@@ -29,10 +26,8 @@ div.opening-notes {}
     margin-left: 20px;
 }
 
-#main-content div.opening-notes h4:before {
-    content "";
-}
-#main-content div.opening-notes h4 {
-    text-align: left;
-    margin-left: 20px;
+#main-content div.textbox code {
+    background-color: #40408A;
+    color: #FFFF00;
+    font-family: bold;
 }
