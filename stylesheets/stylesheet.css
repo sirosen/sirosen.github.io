@@ -8,9 +8,9 @@ header {
 /* Change Colors */
 .navbar {
     background: #184AD0;
-    background: linear-gradient(top, #1B1BB1 0%, #184AD0 40%);
-    background: -moz-linear-gradient(top, #1B1BB1 0%, #184AD0 40%);
-    background: -webkit-linear-gradient(top, #1B1BB1 0%, #184AD0 40%);
+    background: linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
+    background: -moz-linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
+    background: -webkit-linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
 }
 .navbar .navbar-brand {
     color: #FFD700;
@@ -100,6 +100,15 @@ body {
 }
 #main-content h6:before {
     content: "//////";
+}
+
+#main-content .opening-notes h1:before,
+#main-content .opening-notes h2:before,
+#main-content .opening-notes h3:before,
+#main-content .opening-notes h4:before,
+#main-content .opening-notes h5:before,
+#main-content .opening-notes h6:before {
+    content: unset;
 }
 
 /*
