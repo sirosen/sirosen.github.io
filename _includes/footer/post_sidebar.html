@@ -1,8 +1,16 @@
-<p>Past posts:</p>
-<ul>
+<div class="post-listing">
+  {% if page.previous %}
+  <a class="btn btn-default" href="{{ page.previous.url }}" role="button">&lt; Prev</a>
+  {% endif %}
+  {% if page.next %}
+  <a class="btn btn-default" href="{{ page.next.url }}" role="button">&gt; Next</a>
+  {% endif %}
+
+  <ul>
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{post.date|date:"%Y-%m-%d"}} -- {{post.title}}</a>
     </li>
   {% endfor %}
-</ul>
+  </ul>
+</div>
