@@ -45,10 +45,9 @@ You will need the following to make a single serving:
  - (optional) 1 whole cardamom pod
  - (optional) 1 tbsp cream
 
-If you intend to make more than one serving, the amount of coffee you use
-should increase slightly faster than the amount of water.
-A good rule is hard to come by, but for two servings add 1 tbsp of coffee and
-1/3 cup of water.
+If you intend to make more than one serving, the amount of water and coffee you
+use should increase at a rate of 1 tbsp of coffee per 1/3 cup of water (and
+that adds about 1 serving).
 
 You will also need:
 
@@ -109,20 +108,26 @@ Our goal is not to boil the water, but to induce a foaming effect.
 
 Place the pot on the stove, and check on it at least once a minute.
 
-![Coffee Before Foaming](/assets/blog_content/turkish_coffee/first_heat.png)
+<img src="/assets/blog_content/turkish_coffee/first_heat.png"
+     class="img-responsive" alt="Coffee Before Foaming">
 
 It should take 5-10 minutes to begin foaming.
 When it starts foaming, you will only have a few seconds to get it off of the
 heat.
 
 This is what the foam should look like as it starts, only a bubble or two:
-![Foaming Just Starting](/assets/blog_content/turkish_coffee/foaming_begins.png)
+
+<img src="/assets/blog_content/turkish_coffee/foaming_begins.png"
+     class="img-responsive" alt="Foaming Just Starting">
 
 after 5 seconds or so, the bubbles will grow to an intermediate stage at which
 it is first recognizably something you could call a foam.
 
 However, this heralds a more violent and rapid rise in the bubbles.
-![Foam Still Loading](/assets/blog_content/turkish_coffee/foaming_before_violence.png)
+
+<img src="/assets/blog_content/turkish_coffee/foaming_before_violence.png"
+     class="img-responsive" alt="Foam Still Loading">
+
 
 I couldn't get a photo after this phase, as you want to get the foam to begin
 rising rapidly before removing the pot from the heat.
@@ -132,7 +137,9 @@ there shortly.
 If you have a gas stove like me, you can turn the heat off and back on, but
 leaving it on for under 30 seconds is more foolproof.
 
-![First Foam Done](/assets/blog_content/turkish_coffee/first_foam_done.png)
+<img src="/assets/blog_content/turkish_coffee/first_foam_done.png"
+     class="img-responsive" alt="First Foam Done">
+
 
 Stir Down
 ---
@@ -140,12 +147,15 @@ Stir Down
 Using the handle of a metal spoon, gently stir down the foam until it consists
 only of a few bubbles on the surface of the proto-coffee.
 
-![Stir Down](/assets/blog_content/turkish_coffee/stir_down.png)
+<img src="/assets/blog_content/turkish_coffee/stir_down.png"
+     class="img-responsive" alt="Stir Down">
+
 
 Set the spoon aside, you'll need it more later.
 I like to put it in my coffee cup to keep my counters clean:
 
-![No More Spoon!](/assets/blog_content/turkish_coffee/spoon_set_aside.png)
+<img src="/assets/blog_content/turkish_coffee/spoon_set_aside.png"
+     class="img-responsive" alt="No More Spoon!">
 
 Second Heat
 ---
@@ -153,9 +163,11 @@ Second Heat
 Return the pot to the heat, and be ready for violent foaming.
 This time, the foam will rise rapidly after only 30 seconds or so of heat.
 
-![Second Foam](/assets/blog_content/turkish_coffee/second_foam1.png)
+<img src="/assets/blog_content/turkish_coffee/second_foam1.png"
+     class="img-responsive" alt="Second Foam">
 
-![Wow Such Foam](/assets/blog_content/turkish_coffee/second_foam2.png)
+<img src="/assets/blog_content/turkish_coffee/second_foam2.png"
+     class="img-responsive" alt="Wow Such Foam">
 
 Save your stove and return the pot to the trivet.
 Leave the heat on (if you live dangerously) as we'll be heating the pot a third
@@ -166,7 +178,8 @@ Stir Down Again
 
 Stir the coffee down a second time, again just trying to settle the bubbles.
 
-![Second Stirring](/assets/blog_content/turkish_coffee/stir_down2.png)
+<img src="/assets/blog_content/turkish_coffee/stir_down2.png"
+     class="img-responsive" alt="Second Stirring">
 
 Third Heat
 ---
@@ -201,14 +214,16 @@ This will take advantage of the ibrik's shape to keep most of the grounds in
 the pot.
 Note the thinness of the stream shown below.
 
-![Very Pour, Wow](/assets/blog_content/turkish_coffee/slow_pour.png)
+<img src="/assets/blog_content/turkish_coffee/slow_pour.png"
+     class="img-responsive" alt="Very Pour, Wow">
 
 Do not pour out all of the liquid -- when you see many grounds coming along for
 the ride, slow your pour even more if you can, and eventually stop.
 You won't be able to keep all of the grounds out, but you should be left with a
 thick sludge in your pot:
 
-![Much Sludge](/assets/blog_content/turkish_coffee/pot_sludge.png)
+<img src="/assets/blog_content/turkish_coffee/pot_sludge.png"
+     class="img-responsive" alt="Much Sludge">
 
 There's no good use for this I know of, although I want to try using it for a
 coffee milkshake.
@@ -223,6 +238,7 @@ Because some coffee grounds enter the cup inevitably during the pour, be sure
 to only drink until you encounter the first few grounds.
 The last dregs of your cup are not good eating.
 
-![Such Empty](/assets/blog_content/turkish_coffee/empty_cup.png)
+<img src="/assets/blog_content/turkish_coffee/empty_cup.png"
+     class="img-responsive" alt="Such Empty">
 
 This cup qualifies as "empty" for me.
