@@ -151,3 +151,22 @@ body {
     float: right;
     margin-top: 50px;
 }
+
+/* Resume Page */
+#resume-include {
+    font-size: 16px;
+}
+
+#resume-include h1:before {
+    content: unset;
+}
+
+#resume-include .section-title {
+    border-radius: 2px 4px;
+    background: #F7F7F7;
+}
+
+#resume-include .subsection-header {
+    border-radius: 2px 1px;
+    background: #EFEFEF;
+}

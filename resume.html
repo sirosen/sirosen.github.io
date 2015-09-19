@@ -2,21 +2,23 @@
 layout: default
 ---
 
-<h1><a name="resume" class="anchor" href="#resume"><span class="octicon octicon-link"></span></a>Resume</h1>
-
-<img src="https://raw.githubusercontent.com/sirosen/OpenResume/master/output/resume.png" width="700px" height="920px">
+<div id="resume-include"></div>
+<script>
+$('#resume-include').load('https://raw.githubusercontent.com/sirosen/OpenResume/master/output/resume.html');
+</script>
 
 <h1><a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code</h1>
 
-<p>This resume is scrapped from GitHub, and displayed in the form of a png.
-The png is rendered with ImageMagick from a pdf as part of my compilation
-process, but the real magic is behind the png.</p>
+<p>This resume is scrapped from GitHub, and included with a JQuery
+<code>load</code>, but the real magic is behind the html.</p>
 
 <p>The resume source is a JSON document -- it's exact schema is ill-defined,
 since I'm the only one using it and it changes to suit my needs.
-That JSON is rendered to LaTeX source file via ruby ERB templating (load from
-JSON, scrub to texify things like ampersands and underscores, and run ERB), and
-then handed off to <code>pdflatex</code> to do its wizardry.
+That JSON is rendered to HTML and to LaTeX source via ruby ERB templating.
+The basic flow is (1) load from JSON, (2) scrub to texify or HTML-escape things
+like ampersands and underscores, and (3) run ERB.
+The LaTeX is handed off to <code>pdflatex</code> to do its wizardry, and the
+HTML is included here.
 There is a Makefile which exists to pass arguments to the ruby script, but does
 little else.</p>
 
@@ -24,7 +26,3 @@ little else.</p>
 <a href="https://github.com/sirosen/OpenResume">the source</a>
 either as a jumping-off point for your own resume templating needs, or use the
 generated LaTeX source as a template for your own Resume or CV.</p>
-
-<p>The ultimate goal of these templating shenanighans is to produce HTML output
-which could be embedded and styled on this page.
-I will begin work on this feature at a later date.</p>
