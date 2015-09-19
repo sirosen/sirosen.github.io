@@ -1,10 +1,18 @@
 <div class="post-listing">
+  <div class="row">
+    <div class="col-xs-6">
   {% if page.previous %}
-  <a class="btn btn-default" href="{{ page.previous.url }}" role="button">&lt; Prev</a>
+      <a class="btn btn-default center-block" href="{{ page.previous.url }}" role="button">&lt; Prev</a>
   {% endif %}
+    </div>
+    <div class="col-xs-6">
   {% if page.next %}
-  <a class="btn btn-default" href="{{ page.next.url }}" role="button">&gt; Next</a>
+      <a class="btn btn-default center-block" href="{{ page.next.url }}" role="button">Next &gt;</a>
   {% endif %}
+    </div>
+  </div>
+
+  <hr>
 
   <ul>
   {% for post in site.posts %}
