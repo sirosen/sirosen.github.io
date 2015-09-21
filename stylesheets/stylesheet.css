@@ -153,7 +153,8 @@ body {
 }
 
 /* Resume Page */
-#resume-include {
+
+#main-content .resume-container {
     font-size: 16px;
     background: #F7F7F7;
     border-radius: 10px;
@@ -163,11 +164,18 @@ body {
     padding-bottom: 10px;
 }
 
-#resume-include h1:before {
+#main-content .resume-container .github-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
+#main-content .resume-container h1:before {
     content: unset;
 }
 
-#resume-include .section-title {
+#main-content .resume-container .section-title {
     background: #EFEFEF;
     border-radius: 16px 2px;
     padding-top: 6px;
@@ -176,7 +184,7 @@ body {
     padding-bottom: 6px;
 }
 
-#resume-include .subsection-header {
+#main-content .resume-container .subsection-header {
     background: #EDEDED;
     border-radius: 16px 2px;
     padding-top: 6px;
