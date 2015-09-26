@@ -2,15 +2,15 @@
 layout: default
 ---
 
-<ul id="projtabs" class="nav nav-tabs" role="tablist">
+<ul id="projtabs" class="nav nav-pills">
   <li role="presentation" class="active">
-    <a href="#salve" aria-controls="salve" role="tab" data-toggle="tab">SALVE</a>
+    <a href="#salve" aria-controls="salve" data-toggle="pill">SALVE</a>
   </li>
   <li role="presentation">
-    <a href="#openresume" aria-controls="openresume" role="tab" data-toggle="tab">OpenResume</a>
+    <a href="#openresume" aria-controls="openresume" data-toggle="pill">OpenResume</a>
   </li>
   <li role="presentation">
-    <a href="#toys" aria-controls="toys" role="tab" data-toggle="tab">Toys</a>
+    <a href="#toys" aria-controls="toys" data-toggle="pill">Toys</a>
   </li>
 </ul>
 
@@ -24,4 +24,6 @@ layout: default
   <div class="tab-pane fade" id="toys">
     {% include projects/toys.html %}
   </div>
+
+  <hr>
 </div>

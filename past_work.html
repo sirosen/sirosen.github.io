@@ -2,12 +2,12 @@
 layout: default
 ---
 
-<ul id="worktabs" class="nav nav-tabs" role="tablist">
+<ul id="worktabs" class="nav nav-pills">
   <li role="presentation" class="active">
-    <a href="#manticore" aria-controls="manticore" role="tab" data-toggle="tab">Manticore</a>
+    <a href="#manticore" aria-controls="manticore" data-toggle="pill">Manticore</a>
   </li>
   <li role="presentation">
-    <a href="#csil" aria-controls="csil" role="tab" data-toggle="tab">CSIL</a>
+    <a href="#csil" aria-controls="csil" data-toggle="pill">CSIL</a>
   </li>
 </ul>
 
@@ -18,4 +18,6 @@ layout: default
   <div class="tab-pane fade" id="csil">
     {% include past_work/csil.html %}
   </div>
+
+  <hr>
 </div>
