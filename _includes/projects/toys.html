@@ -1,0 +1,35 @@
+<h2>Hydra</h2>
+
+<p><a href="http://github.com/sirosen/Hydra/">Hydra</a>
+was an toy project I worked on with
+<a href="http://github.com/courageousillumination">Tristan Rasmussen</a> while we both worked at the
+<a href="http://csil.cs.uchicago.edu/">CSIL</a>.
+We experimented on making a forkbomb as nefarious as we could.
+Hydra renames its children, bounces back signals it receives (other than SIGKILL, of course), and begins mucking with shells and ttys it can get its hands on.
+Running Hydra is dangerous to a system's health, but not to the state of the filesystem.</p>
+
+<h2>Dotpimizer</h2>
+
+<p><a href="https://github.com/courageousillumination/dotpimizer/">Dotpimizer</a>
+was another small project on which I collaborated with
+<a href="http://github.com/courageousillumination">Tristan Rasmussen</a>.
+It was a small Hackathon project that we did to draw regexes as NFAs, but is not very well documented.
+Dotpimizer has the nice feature of producing dot files for all stages of its NFA transformations, so that you can inspect and "watch" the NFA simplify.
+The ultimate goal of the project was to optimize the regex and display the NFA transformations, but this was never fully achieved.</p>
+
+<h2>inv_parser</h2>
+
+<p><a href="http://github.com/sirosen/inv_parser/">inv_parser</a>
+is an early verrsion of a package I wrote for the
+<a href="http://csil.cs.uchicago.edu/">CSIL</a>
+to parse the output of OSX's System Profiler.
+The code kept in the GitHub repository is not actively maintained, but was an early iteration of the project.</p>
+
+<p>Our experience across multiple versions of OSX was that the non-full textual output of System Profiler was a lot more stable than its plist output.
+Although this may have improved in the recent past, the textual solution works across a wider range of versions.
+In order simplify parsing, we convert the text to xml, and then run xpath expressions on the xml.
+For this to be possible, I used several rewrites of special characters, and some other nonstandard practices.</p>
+
+<p><a href="http://github.com/sirosen/inv_parser/">inv_parser</a>
+is far from exemplary code, but it now has years of successful usage in a production context.
+In spite of its quirks, it has continued to work well over this period.</p>
