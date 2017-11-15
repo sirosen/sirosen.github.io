@@ -6,13 +6,12 @@ layout: post
 Written in collaboration with Josh Schwartz.
 </div>
 
-UNDER CONSTRUCTION
-==================
+UNFINISHED
+==========
 
-This page is an incomplete work in progress.
-Feedback and comments are still appreciated.
+This page was never completed. Sorry.
 
-I have started working with Josh Schwartz, a close friend of mine, to assemble a more comprehensive higher quality document.
+Written partly in collaboration with Josh Schwartz.
 
 Heartbleed and GnuTLS: From the Technophile to the Technophobe
 ==============================================================

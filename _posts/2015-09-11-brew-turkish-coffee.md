@@ -7,29 +7,10 @@ By Popular Request: How to Brew Turkish Coffee
 
 Recently, I started using my ibrik, often called a "Turkish coffee pot", to
 brew coffee.
-When I first did, I tweeted that this is some of the best coffee, maybe even
-the best, that I've had, and several family members and friends asked how they
-could make it.
 
 I used several sources as guides, and therefore find it easiest to write this
 down afresh.
 
-
-An Appeasement to Purists
----
-
-Anyone who takes turkish coffee seriously will scoff at the idea of adding
-cream.
-Although it violates the tradition of preparation and service of this drink,
-the coffee it produces tastes *very* good.
-
-Ultimately, this post is not about the traditions of brewing coffee, but about
-producing a tasty drink.
-Turkish coffee is very strong, similar to straight espresso, and will likely
-taste harsh if you are used to drinking drip coffee or preparations of espresso
-with milk.
-To produce a more mild drink, I will happily encourage others to do as I do and
-add a touch of cream to soften the taste.
 
 Readying Your Kitchen
 ===
@@ -61,15 +42,10 @@ The Grind
 ---
 
 If you are using whole coffee beans, you should grind them very, very finely.
-A traditional turkish hand grinder is ideal, but if, like me, you only have an
-electric grinder, getting a sufficiently fine grind is difficult.
+If, like me, you don't have a burr grinder, getting a sufficiently fine
+grind is difficult.
 
-You want to reduce the beans to a powder finer than sand, which depending on
-your grinder's make and model may require you to pass the grinds through
-several phases.
-With some grinders this is not possible, but for those which double as spice
-grinders the main requirement is that you shake the grinder periodically and
-take a long time.
+You want to reduce the beans to a powder finer than sand.
 
 Preparing to Prepare
 ---
@@ -225,9 +201,8 @@ thick sludge in your pot:
 <img src="/assets/blog_content/turkish_coffee/pot_sludge.png"
      class="img-responsive" alt="Much Sludge">
 
-There's no good use for this I know of, although I want to try using it for a
-coffee milkshake.
-Until we learn otherwise, just wash out the pot with hot water and gentle
+There's no good use for this.
+Just wash out the pot with hot water and gentle
 application of a sponge or cleaning rag by the lip.
 The slude should leave it gracefully.
 
@@ -241,4 +216,4 @@ The last dregs of your cup are not good eating.
 <img src="/assets/blog_content/turkish_coffee/empty_cup.png"
      class="img-responsive" alt="Such Empty">
 
-This cup qualifies as "empty" for me.
+This cup qualifies as "empty".
