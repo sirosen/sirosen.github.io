@@ -2,13 +2,15 @@
 layout: post
 ---
 
+EDIT
+----
+This page was edited 2018-04-04
+
 Hello, GitHub Pages
 ===================
 
 I have started using GitHub pages to host my personal homepage.
 It seems to work quite well, and Jekyll templating is fairly smooth.
-My only major complaint about the system is that it is not possible to render the site without installing Jekyll &c locally.
-This is a step backwards from HTML that can be opened in any browser, but it seems worth it for shared headers, footers, and so forth.
 
 Redirecting Correctly
 =====================

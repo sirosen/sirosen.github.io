@@ -2,6 +2,16 @@
 layout: post
 ---
 
+Update: 2018-04-04
+---
+
+As of 2018-04-04, I'm no longer using the suggested script anywhere.
+
+I stand by the assessment of this as a gap in the chef-vault toolchain --
+accessing vault data outside of the context of a chef-client run -- albeit a
+small one.
+
+
 Scripting Against Chef Vault
 ===
 
