@@ -1,8 +1,11 @@
 <p><a href="http://salve.sirosen.net/">SALVE</a>
-is a language designed for configuration deployment from a git repository.
+was a language designed for configuration deployment from a git repository.
 Originally inspired by
 <a href="http://rsug.itd.umich.edu/software/radmind/">University of Michigan's Radmind</a>,
-it originated as an answer to the common practice of keeping dotfiles and other personal configuration on github.
-Although many of these repositories contain the components for a complex and highly personalized setup, the only way to automate deployment onto a new machine or virtual machine is through manual scripting.
-Scripts are inherently dangerous and error-prone, containing numerous assumptions about permissions, directory structure, and so forth.
-SALVE is intended to insulate the owners of such repos from concerns about correctness, safety, and idempotence.</p>
+the idea was to have a purpose-built tool for keeping dotfiles and personal
+config in a github repo, then deploying that config to a new machine.</p>
+
+<p>Ultimately, having a dedicated language for this purpose was more trouble
+than it was worth. One of the great advantages of shell scripts is their
+immense flexibility, and giving this up doesn't really seem worth it in the
+end. After reaching this conclusion, I have stopped working on SALVE.</p>
