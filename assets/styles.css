@@ -111,40 +111,6 @@ body {
     content: unset;
 }
 
-/*
- * Sidebar
- */
-#sidebar a.button {
-    width: 202px;
-    padding-top: 10px;
-    padding-left: 80px;
-    display: block;
-    height: 80px;
-    background: transparent url(../images/download-button.png) 0 0 no-repeat;
-}
-
-#sidebar a.button .button-text {
-    padding-top: 5px;
-    color: #FFFFFF;
-    font-size: 21px;
-}
-#sidebar a.button .button-text small {
-    display: block;
-    font-size: 11px;
-}
-
-#sidebar a.button.github {
-    background: transparent url(../images/github-button.png) 0 0 no-repeat;
-}
-#sidebar a.button.python {
-    background: transparent url(../images/python-button.png) 0 0 no-repeat;
-}
-#sidebar a.button.github .button-text,
-#sidebar a.button.python .button-text {
-    color: #2F7BCB;
-}
-
-
 /* Footnote */
 #footernote {
     border-top: 4px solid #2F7BCB;
