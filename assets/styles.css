@@ -7,57 +7,53 @@ header {
 
 /* Change Colors */
 .navbar {
-    background: #184AD0;
-    background: linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
-    background: -moz-linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
-    background: -webkit-linear-gradient(270deg, #1B1BB1 0%, #184AD0 40%);
+    background: #282828;
+    border-color: #665C54;
+    background: linear-gradient(270deg, #504945 0%, #1d2021 40%);
+    background: -moz-linear-gradient(270deg, #504945 0%, #1d2021 40%);
+    background: -webkit-linear-gradient(270deg, #504945 0%, #1d2021 40%);
 }
 .navbar .navbar-brand {
-    color: #FFD700;
-}
-.navbar .navbar-nav .dropdown-header {
-    color: #A4A4A4;
+    color: #EBDBB2;
 }
 .navbar .navbar-nav li a {
-    color: #FFD700;
+    color: #EBDBB2;
 }
 .navbar .navbar-nav li a:hover {
-    color: #E0D000;
+    color: #A89984;
 }
 .navbar .navbar-brand:hover {
-    color: #E0D000;
-}
-.navbar .navbar-nav .dropdown-menu>li>a,
-.navbar .navbar-nav .open .dropdown-menu>li>a {
-    color: #184AD0;
+    color: #A89984;
 }
 @media(max-width:767px){
     .navbar .navbar-nav .dropdown-menu>li>a,
     .navbar .navbar-nav .open .dropdown-menu>li>a {
-        color: #FFD700;
+        color: #EBDBB2;
     }
 }
 
-.navbar .navbar-brand img {
-    max-height: 55px;
-    max-width: 30%;
-    overflow: visible;
-    padding-top: 0;
-    padding-bottom: 0;
-    display: inline;
-}
-
 /*
- * Primary text content
+ * Primary content
  */
 body {
     font-size: 15px;
     line-height: 1.5;
-    background: #FAFAFA;
+    background: #D5C4A1;
     font-family: 'Helvetica Neue', Helvetica, Arial, serif;
     font-weight: 400;
-    color: #606060;
+    color: #3c3836;
 }
+hr {
+  border-color: #B57614;
+}
+a {
+  color: #076678;
+}
+code {
+  color: #EBDBB2;
+  background-color: #32302F;
+}
+
 
 
 /*
@@ -70,7 +66,7 @@ body {
 #main-content h5,
 #main-content h6 {
     font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
-    color: #474747;
+    color: #282828;
 }
 
 #main-content h1:before,
@@ -79,7 +75,7 @@ body {
 #main-content h4:before,
 #main-content h5:before,
 #main-content h6:before {
-    color: #9ddcff;
+    color: #689D6A;
     padding-right: 0.3em;
 }
 
@@ -113,16 +109,15 @@ body {
 
 /* Footnote */
 #footernote {
-    border-top: 4px solid #2F7BCB;
+    border-top: 4px solid #8F3F71;
     float: right;
     margin-top: 50px;
 }
 
 /* Resume Page */
-
 #main-content .resume-container {
     font-size: 16px;
-    background: #F7F7F7;
+    background: #BDAE93;
     border-radius: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -142,7 +137,7 @@ body {
 }
 
 #main-content .resume-container .section-title {
-    background: #EFEFEF;
+    background: #928374;
     border-radius: 16px 2px;
     padding-top: 6px;
     padding-left: 6px;
@@ -151,7 +146,7 @@ body {
 }
 
 #main-content .resume-container .subsection-header {
-    background: #EDEDED;
+    background: #A89984;
     border-radius: 16px 2px;
     padding-top: 6px;
     padding-left: 6px;
@@ -193,4 +188,9 @@ div .textbox {
     background-color: #40408A;
     color: #FFFF00;
     font-family: bold;
+}
+
+/* override bootstrap styles */
+.nav-pills>li.active>a {
+    background-color: #076678;
 }
