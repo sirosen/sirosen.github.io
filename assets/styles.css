@@ -194,6 +194,9 @@ div .textbox {
 .nav-pills>li.active>a {
     background-color: #076678;
 }
+.nav-pills>li.active>a:hover {
+    background-color: #458588;
+}
 pre {
   background: none;
   border: none;
