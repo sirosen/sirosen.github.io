@@ -84,7 +84,7 @@ I'd like to look at the first thing I hacked while working on this.
 It's so atrociously horrible that it should immediately convince you that this
 is the *wrong way* to do this.
 
-<pre class="prettyprint"><code class="language-sh">#!/bin/bash
+<pre><code class="bash">#!/bin/bash
 
 /opt/chef/embedded/bin/chef-vault --chef-config-file /etc/chef/client.rb \
   -v "$1" -i "$2" -a "$3" | \
@@ -116,7 +116,7 @@ That way, if the embedded `/bin/` dir ever moves, the script won't break.
 So, here's the solution I ended up with, and I'm actually surprised by how
 happy I am with it.
 
-<pre class="prettyprint linenums"><code class="language-rb">#!<%= File.join(Chef::Config.embedded_dir, 'bin', 'ruby') %>
+<pre><code class="ruby">#!<%= File.join(Chef::Config.embedded_dir, 'bin', 'ruby') %>
 
 require 'chef'
 require 'chef-vault'

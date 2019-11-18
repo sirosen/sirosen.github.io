@@ -50,7 +50,7 @@ A feature of Chef which users are generally familiar with is the possibility of
 using Ruby Blocks as the values of `not_if` or `only_if` guards.
 Generally, this might be used something like
 
-<pre class="prettyprint"><code class="language-rb">execute "runme" do
+<pre><code class="ruby">execute "runme" do
   cwd     "/var/scripts/"
   cmd     "./runme.sh"
   not_if  { ::File.exists?('/var/scripts/.dontrun') }
@@ -61,7 +61,7 @@ However, since an arbitrary block can be used, this can also be used to do much
 more sophisticated checks.
 Try this one on for size:
 
-<pre class="prettyprint"><code class="language-rb">github_client_id = 'abc123'
+<pre><code class="ruby">github_client_id = 'abc123'
 github_client_id_xpath = '/hudson/securityRealm/clientID'
 conf_file = ::File.join(node['jenkins']['master']['home'], 'config.xml')
 ruby_block "update #{conf_file}" do
@@ -92,7 +92,7 @@ will be some amount of code duplication between the guard and the `block`
 attribute.
 It's tempting to try to write an LWRP which looks something like this
 
-<pre class="prettyprint"><code class="language-rb">conf_file = ::File.join(node['jenkins']['master']['home'], 'config.xml')
+<pre><code class="ruby">conf_file = ::File.join(node['jenkins']['master']['home'], 'config.xml')
 
 xpath_upsert ::File.join(node['jenkins']['master']['home'], 'config.xml') do
   file    conf_file
@@ -107,7 +107,7 @@ which is Nokogiri's attribute for raw string content between opening and
 closing XML tags.
 It works for the GitHub client ID because the xml looks like this:
 
-<pre class="prettyprint"><code class="language-xml">&lt;hudson&gt;
+<pre><code class="xml">&lt;hudson&gt;
   &lt;securityRealm&gt;
     &lt;clientID&gt;abc123&lt;/clientID&gt;
   &lt;/securityRealm&gt;
@@ -121,7 +121,7 @@ equivalence checks.
 An `xpath_upsert` resource might work for setting content on explicitly
 designated elements, but what about setting values for something like this?
 
-<pre class="prettyprint"><code class="language-xml">&lt;hudson&gt;
+<pre><code class="xml">&lt;hudson&gt;
   &lt;authorizationStrategy&gt;
     &lt;rootACL&gt;
       &lt;adminUserNameList&gt;
@@ -137,7 +137,7 @@ designated elements, but what about setting values for something like this?
 When we look at controlling these values with a raw `ruby_block` resource
 (which is the solution I opted for), the difficulty becomes clear.
 
-<pre class="prettyprint"><code class="language-rb">admins_xpath = '/hudson/authorizationStrategy/rootACL/adminUserNameList'
+<pre><code class="ruby">admins_xpath = '/hudson/authorizationStrategy/rootACL/adminUserNameList'
 admins = []
 search('users',
        'groups:jenkinsadmin NOT action:remove') do |user|
@@ -202,7 +202,7 @@ server.
 It may not be the most elegant solution, but you've got to love that Chef even
 lets me do this.
 
-<pre class="prettyprint linenums"><code class="language-rb"># install nokogiri for XML editing capabilities
+<pre><code class="ruby"># install nokogiri for XML editing capabilities
 # we need to load and traverse the Jenkins config to modify specific elements
 # in this recipe, and nokogiri will serve as our XPath bindings and XML
 # transformation tool
