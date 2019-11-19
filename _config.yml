@@ -1,6 +1,6 @@
 safe: true
 lsi: false
-pygments: true
+highlighter: none
 source: /home/sirosen/sirosen.github.io
-baseurl: "http://sirosen.net/"
+baseurl: "https://sirosen.net/"
 markdown: kramdown
