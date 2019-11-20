@@ -5,31 +5,24 @@ header {
     font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
 }
 
-/* Change Colors */
 .navbar {
-    background: #282828;
-    border-color: #665C54;
-    background: linear-gradient(270deg, #504945 0%, #1d2021 40%);
-    background: -moz-linear-gradient(270deg, #504945 0%, #1d2021 40%);
-    background: -webkit-linear-gradient(270deg, #504945 0%, #1d2021 40%);
+    background: #928374;
+    border-color: #BDAE93;
+    background: linear-gradient(270deg, #928374 0%, #BDAE93 40%);
+    background: -moz-linear-gradient(270deg, #928374 0%, #BDAE93 40%);
+    background: -webkit-linear-gradient(270deg, #928374 0%, #BDAE93 40%);
 }
 .navbar .navbar-brand {
-    color: #EBDBB2;
+    color: #282828;
 }
 .navbar .navbar-nav li a {
-    color: #EBDBB2;
+    color: #1d2021;
 }
 .navbar .navbar-nav li a:hover {
-    color: #A89984;
+    color: #504945;
 }
 .navbar .navbar-brand:hover {
-    color: #A89984;
-}
-@media(max-width:767px){
-    .navbar .navbar-nav .dropdown-menu>li>a,
-    .navbar .navbar-nav .open .dropdown-menu>li>a {
-        color: #EBDBB2;
-    }
+    color: #504945;
 }
 
 /*
@@ -38,19 +31,19 @@ header {
 body {
     font-size: 15px;
     line-height: 1.5;
-    background: #D5C4A1;
+    background: #282828;
     font-family: 'Helvetica Neue', Helvetica, Arial, serif;
     font-weight: 400;
-    color: #3c3836;
+    color: #A89984;
 }
 hr {
-  border-color: #B57614;
+  border-color: #d79921;
 }
 a {
-  color: #076678;
+  color: #83A598;
 }
 code {
-  color: #EBDBB2;
+  color: #D79921;
   background-color: #32302F;
 }
 
@@ -66,7 +59,7 @@ code {
 #main-content h5,
 #main-content h6 {
     font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
-    color: #282828;
+    color: #689D6A;
 }
 
 #main-content h1:before,
@@ -75,7 +68,7 @@ code {
 #main-content h4:before,
 #main-content h5:before,
 #main-content h6:before {
-    color: #689D6A;
+    color: #98971A;
     padding-right: 0.3em;
 }
 
@@ -109,7 +102,7 @@ code {
 
 /* Footnote */
 #footernote {
-    border-top: 4px solid #8F3F71;
+    border-top: 4px solid #CC241D;
     float: right;
     margin-top: 50px;
 }
@@ -117,12 +110,9 @@ code {
 /* Resume Page */
 #main-content .resume-container {
     font-size: 16px;
-    background: #BDAE93;
+    background: #1D2021;
     border-radius: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 #main-content .resume-container .github-link {
@@ -137,69 +127,36 @@ code {
 }
 
 #main-content .resume-container .section-title {
-    background: #928374;
+    background: #32302F;
     border-radius: 16px 2px;
-    padding-top: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
+    padding: 6px 6px 6px 6px;
 }
 
 #main-content .resume-container .subsection-header {
-    background: #A89984;
+    background: #504945;
+    color: #83A598;
     border-radius: 16px 2px;
-    padding-top: 6px;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-bottom: 6px;
-}
-
-
-/* textbox */
-div .textbox {
-  font-family: Helvetica, Terminal, monospace;
-  color: #111;
-  background-color: #C2D1FF;
-  font-size: 12px;
-  border: solid 2px #B0C0FF;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 20px;
-}
-
-#main-content div.textbox h2:before {
-    content: "";
-}
-#main-content div.textbox h2 {
-    text-align: left;
-    margin-left: 20px;
-}
-
-#main-content div.textbox h4:before {
-    content: "";
-}
-#main-content div.textbox h4 {
-    text-align: left;
-    margin-left: 20px;
-}
-
-#main-content div.textbox code {
-    background-color: #40408A;
-    color: #FFFF00;
-    font-family: bold;
+    padding: 6px 6px 6px 6px;
+    margin-bottom: 5px;
 }
 
 /* override bootstrap styles */
 .nav-pills>li.active>a {
-    background-color: #076678;
+    background-color: #83A598;
+    color: #282828;
 }
 .nav-pills>li.active>a:hover,
 .nav-pills>li.active>a:focus {
     background-color: #458588;
+    color: #504945;
+}
+.nav-pills>li>a:hover,
+.nav-pills>li>a:focus {
+    background-color: #D79921;
+    color: #504945;
 }
 pre {
   background: none;
-  border: none;
   padding: 0 0 0 0;
+  border-color: #B16286;
 }
