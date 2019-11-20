@@ -1,6 +1,5 @@
 safe: true
 lsi: false
-highlighter: none
-source: /home/sirosen/sirosen.github.io
-baseurl: "https://sirosen.net/"
-markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    disable : true
