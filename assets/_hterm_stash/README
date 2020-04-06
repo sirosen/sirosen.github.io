@@ -1,0 +1,4 @@
+This is a dir I want on the public Internet so that I can load data from here
+in hterm on my chromebook.
+
+(Local file URIs don't work so well without a real filesystem.)
