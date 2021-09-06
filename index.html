@@ -4,3 +4,8 @@ layout: default
 <h1><a name="about" class="anchor" href="#about"><span class="octicon octicon-link"></span></a>About Me</h1>
 
 <p>I live in Cambridge, MA, but work for Globus at the University of Chicago.</p>
+
+<hr>
+
+{% assign post = site.posts.first %}
+Most Recent Post ({{ post.date | date: '%B %d, %Y' }}): <a href="{{ post.url }}">{{ post.title }}</a>
