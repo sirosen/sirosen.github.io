@@ -12,6 +12,7 @@ $gruv-yellow: #D79921;
 $gruv-green: #98971A;
 $gruv-purple: #B16286;
 $gruv-red: #CC241D;
+$gruv-blue: #458588;
 
 
 @font-face {
@@ -60,7 +61,7 @@ hr { border-color: $gruv-yellow; }
 
 a {
   color: #83A598;
-  &:hover, &:focus { color: #458588; }
+  &:hover, &:focus { color: $gruv-blue; }
 }
 
 code {
@@ -103,7 +104,7 @@ pre code {
     color: #689D6A;
 
     &:before {
-      color: #98971A;
+      color: $gruv-green;
       padding-right: 0.3em;
     }
   }
@@ -175,11 +176,17 @@ pre code {
         color: $gruv-strong-bg;
       }
       &:hover, &:focus {
-        background-color: #458588;
+        background-color: $gruv-blue;
         color: #FABD2F;
-        border-color: #458588 #458588 $gruv-yellow;
+        border-color: $gruv-blue $gruv-blue $gruv-yellow;
       }
     }
+  }
+
+  // style blockquotes
+  blockquote {
+    border-left: 3px solid $gruv-blue;
+    padding-left: 15px;
   }
 }
 
