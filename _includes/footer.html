@@ -5,7 +5,36 @@
 
 <!-- the sidebar is a second column in the main row -->
 <div id="sidebar" class="col-md-3">
-  {% include sidebar_common.html %}
+  {% if page.layout == 'post' %}
+  <div class="post-listing">
+    <div class="sidebar-buttons d-flex flex-row justify-content-around">
+      {% if page.previous %}
+      <a class="btn btn-default" href="{{ page.previous.url }}" role="button">&lt; Prev</a>
+      {% endif %}
+      {% if page.next %}
+      <a class="btn btn-default" href="{{ page.next.url }}" role="button">Next &gt;</a>
+      {% endif %}
+    </div>
+
+    <hr>
+
+    <ul>
+    {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{post.title}}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <hr class="sidebarsep"/>
+  {% endif %}
+
+  <p>You can find me at other locations on the web:</p>
+  <ul>
+    <li><a href="https://github.com/sirosen">GitHub</a></li>
+    <li>...</li>
+  </ul>
 </div>
 
 <!-- End Center|Sidebar Row-->

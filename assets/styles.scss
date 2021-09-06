@@ -11,6 +11,8 @@ $gruv-weak-fg: #A89984;
 $gruv-yellow: #D79921;
 $gruv-green: #98971A;
 $gruv-purple: #B16286;
+$gruv-red: #CC241D;
+
 
 @font-face {
   font-family: 'Allerta';
@@ -77,14 +79,19 @@ pre code {
   background-color: $gruv-strong-bg;
 }
 
-.opening-notes pre {
-  border: none;
-  color: #EBDBB2;
+.opening-notes {
+  .post-written-date {
+    color: $gruv-weak-fg;
+  }
+  pre {
+    border: none;
+    color: #EBDBB2;
+  }
 }
 
 // sidebar separator
 .sidebarsep {
-  border: 1px solid #CC241D;
+  border-top: 2px solid $gruv-red;
   margin-top: 15px;
   margin-bottom: 15px;
 }
