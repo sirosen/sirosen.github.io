@@ -3,9 +3,7 @@
 ---
 
 // Navbar
-header {
-  font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
-}
+header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 .navbar {
   border-color: #BDAE93;
@@ -19,10 +17,12 @@ header {
     }
   }
 
-  .navbar-nav li a {
-    color: #3C3836;
-    &:hover {
-      color: #076678;
+  #main-nav {
+    .navbar-nav li a {
+      color: #3C3836;
+      &:hover, &:active {
+        color: #076678;
+      }
     }
   }
 }
@@ -37,15 +37,11 @@ body {
   color: #EBDBB2;
 }
 
-hr {
-  border-color: #d79921;
-}
+hr { border-color: #D79921; }
 
 a {
   color: #83A598;
-  &:hover, &:focus {
-    color: #458588;
-  }
+  &:hover, &:focus { color: #458588; }
 }
 
 code {
@@ -83,12 +79,12 @@ pre {
     }
   }
 
-  & h1:before { content: ">"; }
-  & h2:before { content: ">>"; }
-  & h3:before { content: ">>>"; }
-  & h4:before { content: ">>>>"; }
-  & h5:before { content: ">>>>>"; }
-  & h6:before { content: ">>>>>>"; }
+  h1:before { content: ">"; }
+  h2:before { content: ">>"; }
+  h3:before { content: ">>>"; }
+  h4:before { content: ">>>>"; }
+  h5:before { content: ">>>>>"; }
+  h6:before { content: ">>>>>>"; }
 
   // Resume Page
   .resume-container {
@@ -105,9 +101,7 @@ pre {
       border: 0;
     }
 
-    & h1:before {
-      content: unset;
-    }
+    h1:before { content: unset; }
 
     .section-title {
       background: #3c3836;
@@ -126,20 +120,32 @@ pre {
   }
 }
 
-// override bootstrap styles
-.nav-pills>li {
-  &.active>a {
-    background-color: #83A598;
-    color: #282828;
+// override bootstrap tabs, mostly colors but also some spacing
+.nav-tabs {
+  border-bottom-color: #D79921;
 
-    &:hover, &:focus {
-      background-color: #458588;
-      color: #504945;
-    }
+  li.nav-item {
+    margin-left: 0.5rem;
+    &:first-child { margin-left: 0; }
   }
 
-  &>a:hover, &>a:focus {
-    background-color: #D79921;
-    color: #504945;
+  li.nav-item>a.nav-link {
+    &.active, &.active:hover, &.active:focus {
+      background-color: #D79921;
+      border-color: #D79921;
+      color: #282828;
+    }
+    &:hover, &:focus {
+      background-color: #458588;
+      color: #FABD2F;
+      border-color: #458588 #458588 #D79921;
+    }
+  }
+}
+
+// adjust background color of sidebar buttons
+.sidebar-buttons {
+  .btn {
+    background-color: #BDAE93;
   }
 }

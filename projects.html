@@ -2,26 +2,42 @@
 layout: default
 ---
 
-<ul id="projtabs" class="nav nav-pills">
-  <li role="presentation" class="active">
-    <a href="#salve" aria-controls="salve" data-toggle="pill">SALVE</a>
+<ul id="projtabs" class="nav nav-tabs mb-2" role="tablist">
+  <li class="nav-item">
+    <a id="openresume-tab"
+       class="nav-link active"
+       href="#openresume"
+       aria-controls="openresume"
+       aria-selected="false"
+       data-toggle="tab"
+       role="tab">OpenResume</a>
   </li>
-  <li role="presentation">
-    <a href="#openresume" aria-controls="openresume" data-toggle="pill">OpenResume</a>
+  <li class="nav-item">
+    <a id="salve-tab"
+       class="nav-link"
+       href="#salve"
+       aria-controls="salve"
+       aria-selected="true"
+       data-toggle="tab"
+       role="tab">SALVE</a>
   </li>
-  <li role="presentation">
-    <a href="#toys" aria-controls="toys" data-toggle="pill">Toys</a>
+  <li class="nav-item">
+    <a id="toys-tab"
+       class="nav-link"
+       href="#toys"
+       aria-controls="toys"
+       aria-selected="true"
+       data-toggle="tab"
+       role="tab">Toys</a>
   </li>
 </ul>
 
-<hr>
-
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="salve">
-    {% include projects/salve.html %}
-  </div>
-  <div class="tab-pane fade" id="openresume">
+  <div class="tab-pane fade show active" id="openresume">
     {% include projects/openresume.html %}
+  </div>
+  <div class="tab-pane fade" id="salve">
+    {% include projects/salve.html %}
   </div>
   <div class="tab-pane fade" id="toys">
     {% include projects/toys.html %}

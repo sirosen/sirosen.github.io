@@ -2,22 +2,38 @@
 layout: default
 ---
 
-<ul id="worktabs" class="nav nav-pills">
-  <li role="presentation" class="active">
-    <a href="#manticore" aria-controls="manticore" data-toggle="pill">Manticore</a>
+<ul id="worktabs" class="nav nav-tabs mb-2" role="tablist">
+  <li class="nav-item">
+    <a id="manticore-tab"
+       class="nav-link active"
+       href="#manticore"
+       aria-controls="manticore"
+       aria-selected="true"
+       data-toggle="tab"
+       role="tab">Manticore</a>
   </li>
-  <li role="presentation">
-    <a href="#csil" aria-controls="csil" data-toggle="pill">CSIL</a>
+  <li class="nav-item">
+    <a id="csil-tab"
+       class="nav-link"
+       href="#csil"
+       aria-controls="csil"
+       aria-selected="false"
+       data-toggle="tab"
+       role="tab">CSIL</a>
   </li>
 </ul>
 
-<hr>
-
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="manticore">
+  <div class="tab-pane fade show active"
+       id="manticore"
+       role="tabpanel"
+       aria-labelledby="manticore-tab">
     {% include past_work/manticore.html %}
   </div>
-  <div class="tab-pane fade" id="csil">
+  <div class="tab-pane fade"
+       id="csil"
+       role="tabpanel"
+       aria-labelledby="csil-tab">
     {% include past_work/csil.html %}
   </div>
 </div>

@@ -9,12 +9,19 @@ layout: default
   </a>
   <div id="resume-include"></div>
 </div>
-<script>
-$('#resume-include').load('https://raw.githubusercontent.com/sirosen/OpenResume/master/output/resume.html');
-</script>
 
 <h1><a name="code" class="anchor" href="#code"><span class="octicon octicon-link"></span></a>Code</h1>
 
 If you want to know more about the code used to generate this resume, check out
 the source on GitHub, or the Open Resume project on my
 <a href="/projects">projects page</a>.
+
+
+<script>
+var ri = document.getElementById('resume-include');
+
+fetch("https://raw.githubusercontent.com/sirosen/OpenResume/master/output/resume.html")
+.then( res => { return res.text() } )
+.then( body => { ri.innerHTML = body } )
+.catch(err => { console.log(err) });
+</script>
