@@ -36,47 +36,59 @@ But wouldn't it be better, wouldn't it be easier, if we knew what we were doing?
 
 ## Cheat Sheet
 
-1. Print the fourth column from whitespace-separated data
+<table class="table table-bordered">
+<tbody>
 
-    ```bash
-    awk '{print $4}'
-    ```
+<tr>
+<td><p>Choose a column</p></td>
+<td>
+<pre><code class="bash">awk '{print $4}'</code></pre>
+<p>Print the fourth column from whitespace-separated data</p>
+</td>
+</tr>
 
-2. Split text on commas, printing the second and third columns, comma separated in the output
+<tr>
+<td><p>Alter a CSV</p></td>
+<td>
+<pre><code class="bash">awk -F ',' '{print $2 "," $3}'</code></pre>
+<p>Split text on commas, printing the second and third columns, comma separated in the output</p>
+</td>
+</tr>
 
-    ```bash
-    awk -F ',' '{print $2 "," $3}'
-    ```
+<tr>
+<td><p>Filter by a column</p></td>
+<td>
+<pre><code class="bash">awk -F '|' '$2==8{print $0}</code></pre>
+<p>Split text on pipe (`|`) characters, printing whole lines when the second column is equal to 8</p>
+</td>
+</tr>
 
-3. Split text on pipe (`|`) characters, printing whole lines when the second column is equal to 8
+<tr>
+<td><p>Compute an average</p></td>
+<td>
+<pre><code class="bash">awk 'BEGIN{sum=0}{sum+=$3}END{print "sum=" sum ",avg=" (sum / NR) ",rows=" NR}'</code></pre>
+<p>Get the sum and average of the third column, plus the number of rows of data</p>
+</td>
+</tr>
 
-    ```bash
-    awk -F '|' '$2==8{print $0}
-    ```
+<tr>
+<td><p>Filter a CSV</p></td>
+<td>
+<pre><code class="bash">awk -F ',' '$2~/^3/{print $0}'</code></pre>
+<p>Filter a CSV to lines where the second column starts with a 3</p>
+</td>
+</tr>
 
-4. Get the sum and average of the third column, plus the number of rows of data
+<tr>
+<td><p>Filter with multiple rules</p></td>
+<td><pre><code class="bash">awk -F ',' '$2~/^3/ && $1%2==0{print $0}'</code></pre>
+<p>Filter a CSV to lines where the second column starts with a 3 and the first column is even</p>
+</td>
+</tr>
 
-    ```bash
-    awk 'BEGIN{sum=0}{sum+=$3}END{print "sum=" sum; print "avg=" (sum / NR); print "num_records=" NR}'
-    ```
+</tbody>
+</table>
 
-    OR
-
-    ```bash
-    awk '{sum+=$3}END{print "sum=" sum ",avg=" (sum / NR) ",num_records=" NR}'
-    ```
-
-5. Filter a CSV to lines where the second column starts with a 3
-
-    ```bash
-    awk -F ',' '$2~/^3/{print $0}'
-    ```
-
-6. Filter a CSV to lines where the second column starts with a 3 and the first column is even
-
-    ```bash
-    awk -F ',' '$2~/^3/ && $1%2==0{print $0}'
-    ```
 
 ## Explanation
 
@@ -95,16 +107,14 @@ awk [OPTIONS] PROGRAM FILE
 
 When `awk` is given a file on standard input (e.g. in a pipeline), then the filename argument is omitted.
 
-So these two are the same
-
 <table class="table table-bordered">
 <thead>
-<tr><td>reading from a file</td><td>reading from stdin</td></tr>
+<tr><td>Reading from a file</td><td>Reading from stdin</td></tr>
 </thead>
 <tbody>
 <tr>
-<td><pre><code class="bash">awk '{print $2}' foo.txt</code></pre></td>
-<td><pre><code class="bash">cat foo.txt | awk '{print $2}'</code></pre></td>
+<td><pre><code class="language-bash">awk '{print $2}' foo.txt</code></pre></td>
+<td><pre><code class="language-bash">cat foo.txt | awk '{print $2}'</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -202,10 +212,8 @@ BEGIN{sum=0}{sum+=$1}END{print sum}
 
 work well in the middle of pipelines.
 
-That means that `{sum+=1}` runs on "every line of input", since there was no matching pattern before it.
-
 Many awk programs manipulate all lines of input have no selector at all, and begin and end with `{` and `}`.
-e.g. You may have seen `awk '{print $2}'` offered up with little-to-no explanation.
+This is the aforementioned "selector is blank" case, meaning that all lines match -- that is why commands like `awk '{print $2}'` work the way they do.
 
 #### awk is Line Oriented
 

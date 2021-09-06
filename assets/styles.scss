@@ -2,11 +2,15 @@
 # yaml frontmatter to ensure jekyll converts the SCSS
 ---
 
-$base-bg: #3C3836;
-$strong-bg: #282828;
-$base-fg: #EBDBB2;
-$alt-fg: #D79921;
-$alt-border: #B16286;
+// gruvbox colors
+$gruv-bg: #3C3836;
+$gruv-strong-bg: #282828;
+$gruv-weak-bg: #665C54;
+$gruv-fg: #EBDBB2;
+$gruv-weak-fg: #A89984;
+$gruv-yellow: #D79921;
+$gruv-green: #98971A;
+$gruv-purple: #B16286;
 
 @font-face {
   font-family: 'Allerta';
@@ -44,13 +48,13 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 body {
   font-size: 15px;
   line-height: 1.5;
-  background: $base-bg;
+  background: $gruv-bg;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   font-weight: 400;
-  color: $base-fg;
+  color: $gruv-fg;
 }
 
-hr { border-color: $alt-fg; }
+hr { border-color: $gruv-yellow; }
 
 a {
   color: #83A598;
@@ -58,19 +62,19 @@ a {
 }
 
 code {
-  color: $alt-fg;
+  color: $gruv-yellow;
   background-color: #32302F;
 }
 pre {
   background: none;
   padding: 0 0 0 0;
-  border: 1px solid $alt-border;
+  border: 1px solid $gruv-purple;
 }
 pre code {
   display: block;
   padding: 0.5rem;
-  color: $alt-fg;
-  background-color: $strong-bg;
+  color: $gruv-fg;
+  background-color: $gruv-strong-bg;
 }
 
 .opening-notes pre {
@@ -139,18 +143,18 @@ pre code {
 
   // adjust color of tables
   table {
-    color: $base-fg;
+    color: $gruv-fg;
     &.table-bordered {
-      border-color: $alt-fg;
+      border-color: $gruv-weak-bg;
       td {
-        border-color: $alt-fg;
+        border-color: $gruv-weak-bg;
       }
     }
   }
 
   // override bootstrap tabs, mostly colors but also some spacing
   .nav-tabs {
-    border-bottom-color: $alt-fg;
+    border-bottom-color: $gruv-yellow;
 
     li.nav-item {
       margin-left: 0.5rem;
@@ -159,14 +163,14 @@ pre code {
 
     li.nav-item>a.nav-link {
       &.active, &.active:hover, &.active:focus {
-        background-color: $alt-fg;
-        border-color: $alt-fg;
-        color: $strong-bg;
+        background-color: $gruv-yellow;
+        border-color: $gruv-yellow;
+        color: $gruv-strong-bg;
       }
       &:hover, &:focus {
         background-color: #458588;
         color: #FABD2F;
-        border-color: #458588 #458588 $alt-fg;
+        border-color: #458588 #458588 $gruv-yellow;
       }
     }
   }
