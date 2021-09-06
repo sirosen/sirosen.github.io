@@ -4,13 +4,13 @@ layout: default
 
 <ul id="projtabs" class="nav nav-tabs mb-2" role="tablist">
   <li class="nav-item">
-    <a id="openresume-tab"
+    <a id="toys-tab"
        class="nav-link active"
-       href="#openresume"
-       aria-controls="openresume"
-       aria-selected="false"
+       href="#toys"
+       aria-controls="toys"
+       aria-selected="true"
        data-toggle="tab"
-       role="tab">OpenResume</a>
+       role="tab">Toys</a>
   </li>
   <li class="nav-item">
     <a id="salve-tab"
@@ -22,24 +22,24 @@ layout: default
        role="tab">SALVE</a>
   </li>
   <li class="nav-item">
-    <a id="toys-tab"
+    <a id="openresume-tab"
        class="nav-link"
-       href="#toys"
-       aria-controls="toys"
-       aria-selected="true"
+       href="#openresume"
+       aria-controls="openresume"
+       aria-selected="false"
        data-toggle="tab"
-       role="tab">Toys</a>
+       role="tab">OpenResume</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane fade show active" id="openresume">
-    {% include projects/openresume.html %}
+  <div class="tab-pane fade show active" id="toys">
+    {% include projects/toys.html %}
   </div>
   <div class="tab-pane fade" id="salve">
     {% include projects/salve.html %}
   </div>
-  <div class="tab-pane fade" id="toys">
-    {% include projects/toys.html %}
+  <div class="tab-pane fade" id="openresume">
+    {% include projects/openresume.html %}
   </div>
 </div>

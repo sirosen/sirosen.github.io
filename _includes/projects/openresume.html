@@ -1,24 +1,8 @@
-<p>My resume is scraped from GitHub, and included on my
-<a href="/resume">resume page</a> with a JQuery <code>load</code>,
-but the real magic is behind the html.</p>
+<p>The goal of this project is to maintain resume content as strctured data (JSON), and template it into LaTeX and HTML as rendering targets.</p>
 
-<p>I want to keep a LaTeX resume so that I can supply a PDF, but also an HTML
-version of it to embed on my site.
-Rather than maintaining two copies of the same content in different formats, I
-decided to build a system that would allow me to produce both the PDF and HTML
-outputs from a single source document.
-In 2015, I finally took the time to build this, using Ruby's ERB templating as
-the mechanism for rendering structured resume information to these formats.</p>
+<p>This allows the content to be scraped from GitHub, and included on my <a href="/resume">resume page</a> while also keeping a PDF version available.</p>
 
-<p>The resume source is a JSON document -- it's exact schema is ill-defined,
-since I'm the only one using it and it changes to suit my needs.
-That JSON is rendered to HTML and to LaTeX source via ruby ERB templating.
-The basic flow is (1) load from JSON, (2) scrub to texify or HTML-escape things
-like ampersands and underscores, and (3) run ERB.
-The LaTeX is handed off to <code>pdflatex</code> to do its wizardry, and the
-HTML is included here.
-There is a Makefile which exists to pass arguments to the ruby script, but does
-little else.</p>
+<p>The current project is written using Ruby's ERB templating, but I may rewrite it into jinja or another system in the future.</p>
 
 <p>Please feel free to use
 <a href="https://github.com/sirosen/OpenResume">the source</a>
