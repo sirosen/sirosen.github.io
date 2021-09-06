@@ -1,0 +1,145 @@
+---
+# yaml frontmatter to ensure jekyll converts the SCSS
+---
+
+// Navbar
+header {
+  font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
+}
+
+.navbar {
+  border-color: #BDAE93;
+  background: #FBF1C7;
+  background: linear-gradient(270deg, #BDAE93 0%, #FBF1C7 30%);
+
+  .navbar-brand {
+    color: #3C3836;
+    &:hover {
+      color: #076678;
+    }
+  }
+
+  .navbar-nav li a {
+    color: #3C3836;
+    &:hover {
+      color: #076678;
+    }
+  }
+}
+
+// Primary content
+body {
+  font-size: 15px;
+  line-height: 1.5;
+  background: #3C3836;
+  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-weight: 400;
+  color: #EBDBB2;
+}
+
+hr {
+  border-color: #d79921;
+}
+
+a {
+  color: #83A598;
+  &:hover, &:focus {
+    color: #458588;
+  }
+}
+
+code {
+  color: #D79921;
+  background-color: #32302F;
+}
+
+pre {
+  background: none;
+  padding: 0 0 0 0;
+  border-color: #B16286;
+}
+
+.opening-notes pre {
+  border: none;
+  color: #EBDBB2;
+}
+
+// sidebar separator
+.sidebarsep {
+  border: 1px solid #CC241D;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#main-content {
+  // Header styles for body
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
+    color: #689D6A;
+
+    &:before {
+      color: #98971A;
+      padding-right: 0.3em;
+    }
+  }
+
+  & h1:before { content: ">"; }
+  & h2:before { content: ">>"; }
+  & h3:before { content: ">>>"; }
+  & h4:before { content: ">>>>"; }
+  & h5:before { content: ">>>>>"; }
+  & h6:before { content: ">>>>>>"; }
+
+  // Resume Page
+  .resume-container {
+    font-size: 16px;
+    background: #1D2021;
+    color: #EBDBB2;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+
+    .github-link {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+    }
+
+    & h1:before {
+      content: unset;
+    }
+
+    .section-title {
+      background: #3c3836;
+      color: #83A598;
+      border-radius: 16px 2px;
+      padding: 6px 6px 6px 6px;
+    }
+
+    .subsection-header {
+      background: #32302F;
+      color: #8EC07C;
+      border-radius: 16px 2px;
+      padding: 6px 6px 6px 6px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+// override bootstrap styles
+.nav-pills>li {
+  &.active>a {
+    background-color: #83A598;
+    color: #282828;
+
+    &:hover, &:focus {
+      background-color: #458588;
+      color: #504945;
+    }
+  }
+
+  &>a:hover, &>a:focus {
+    background-color: #D79921;
+    color: #504945;
+  }
+}

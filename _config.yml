@@ -3,3 +3,5 @@ lsi: false
 kramdown:
   syntax_highlighter_opts:
     disable : true
+sass:
+  style: compact
