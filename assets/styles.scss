@@ -2,6 +2,19 @@
 # yaml frontmatter to ensure jekyll converts the SCSS
 ---
 
+$base-bg: #3C3836;
+$strong-bg: #282828;
+$base-fg: #EBDBB2;
+$alt-fg: #D79921;
+$alt-border: #B16286;
+
+@font-face {
+  font-family: 'Allerta';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/assets/fonts/allerta.ttf) format('truetype');
+}
+
 // Navbar
 header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
@@ -31,13 +44,13 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 body {
   font-size: 15px;
   line-height: 1.5;
-  background: #3C3836;
+  background: $base-bg;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   font-weight: 400;
-  color: #EBDBB2;
+  color: $base-fg;
 }
 
-hr { border-color: #D79921; }
+hr { border-color: $alt-fg; }
 
 a {
   color: #83A598;
@@ -45,14 +58,19 @@ a {
 }
 
 code {
-  color: #D79921;
+  color: $alt-fg;
   background-color: #32302F;
 }
-
 pre {
   background: none;
   padding: 0 0 0 0;
-  border-color: #B16286;
+  border: 1px solid $alt-border;
+}
+pre code {
+  display: block;
+  padding: 0.5rem;
+  color: $alt-fg;
+  background-color: $strong-bg;
 }
 
 .opening-notes pre {
@@ -118,27 +136,38 @@ pre {
       margin-bottom: 5px;
     }
   }
-}
 
-// override bootstrap tabs, mostly colors but also some spacing
-.nav-tabs {
-  border-bottom-color: #D79921;
-
-  li.nav-item {
-    margin-left: 0.5rem;
-    &:first-child { margin-left: 0; }
+  // adjust color of tables
+  table {
+    color: $base-fg;
+    &.table-bordered {
+      border-color: $alt-fg;
+      td {
+        border-color: $alt-fg;
+      }
+    }
   }
 
-  li.nav-item>a.nav-link {
-    &.active, &.active:hover, &.active:focus {
-      background-color: #D79921;
-      border-color: #D79921;
-      color: #282828;
+  // override bootstrap tabs, mostly colors but also some spacing
+  .nav-tabs {
+    border-bottom-color: $alt-fg;
+
+    li.nav-item {
+      margin-left: 0.5rem;
+      &:first-child { margin-left: 0; }
     }
-    &:hover, &:focus {
-      background-color: #458588;
-      color: #FABD2F;
-      border-color: #458588 #458588 #D79921;
+
+    li.nav-item>a.nav-link {
+      &.active, &.active:hover, &.active:focus {
+        background-color: $alt-fg;
+        border-color: $alt-fg;
+        color: $strong-bg;
+      }
+      &:hover, &:focus {
+        background-color: #458588;
+        color: #FABD2F;
+        border-color: #458588 #458588 $alt-fg;
+      }
     }
   }
 }

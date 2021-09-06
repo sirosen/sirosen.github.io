@@ -26,7 +26,7 @@ After a bunch of searching, we come to a Stack Overflow answer that serves up th
 
 > This gets the average of the fourth column divided by the sum of the fifth column of the CSV when the third column is '1' or the twelfth column DOES NOT start with the letter 'p'.
 
-```
+```bash
 awk '$3==1||$12!~/^p/{sum4+=$4;sum5+=$5}END{print (sum4/NR)/sum5}'
 ```
 
@@ -38,43 +38,43 @@ But wouldn't it be better, wouldn't it be easier, if we knew what we were doing?
 
 1. Print the fourth column from whitespace-separated data
 
-    ```
+    ```bash
     awk '{print $4}'
     ```
 
 2. Split text on commas, printing the second and third columns, comma separated in the output
 
-    ```
+    ```bash
     awk -F ',' '{print $2 "," $3}'
     ```
 
 3. Split text on pipe (`|`) characters, printing whole lines when the second column is equal to 8
 
-    ```
+    ```bash
     awk -F '|' '$2==8{print $0}
     ```
 
 4. Get the sum and average of the third column, plus the number of rows of data
 
-    ```
+    ```bash
     awk 'BEGIN{sum=0}{sum+=$3}END{print "sum=" sum; print "avg=" (sum / NR); print "num_records=" NR}'
     ```
 
     OR
 
-    ```
+    ```bash
     awk '{sum+=$3}END{print "sum=" sum ",avg=" (sum / NR) ",num_records=" NR}'
     ```
 
 5. Filter a CSV to lines where the second column starts with a 3
 
-    ```
+    ```bash
     awk -F ',' '$2~/^3/{print $0}'
     ```
 
 6. Filter a CSV to lines where the second column starts with a 3 and the first column is even
 
-    ```
+    ```bash
     awk -F ',' '$2~/^3/ && $1%2==0{print $0}'
     ```
 
@@ -88,25 +88,26 @@ It can do anything you can do in R, Matlab, or Python.
 
 ### Usage
 
-The general form of `awk` usage is as follows:
-
-```
-awk [OPTIONS] <program> <file>
+The general form of `awk` usage is
+```bash
+awk [OPTIONS] PROGRAM FILE
 ```
 
 When `awk` is given a file on standard input (e.g. in a pipeline), then the filename argument is omitted.
 
-So
+So these two are the same
 
-```
-awk '{print $2}' foo.txt
-```
-
-is equivalent to
-
-```
-cat foo.txt | awk '{print $2}'
-```
+<table class="table table-bordered">
+<thead>
+<tr><td>reading from a file</td><td>reading from stdin</td></tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code class="bash">awk '{print $2}' foo.txt</code></pre></td>
+<td><pre><code class="bash">cat foo.txt | awk '{print $2}'</code></pre></td>
+</tr>
+</tbody>
+</table>
 
 ### Options
 
@@ -124,7 +125,7 @@ You should always single-quote your awk programs with `'`. Don't use double quot
 
 In the shell, a double-quoted string can contain variable substitutions using the `$` character. e.g.
 
-```
+```bash
 $ FOO=1
 $ echo "FOO has the value $FOO"
 FOO has the value 1
@@ -132,7 +133,7 @@ FOO has the value 1
 
 But single-quoted strings are treated verbatim.
 
-```
+```bash
 $ echo 'FOO has the value $FOO'
 FOO has the value $FOO
 ```
@@ -155,18 +156,17 @@ You can declare your own variables with `=`, and the operator-assignments `+=`, 
 One oddity with `awk`: if a variable is used with operator-assignment without having been previously declared, it gets a value of `0` to start.
 That means that the two following programs are identical in meaning:
 
-```
-BEGIN{sum=0}
+<table class="table table-bordered">
+<tbody>
+<tr>
+<td><pre><code class="language-awk">BEGIN{sum=0}
 {sum+=$5}
-END{print sum}
-```
-
-vs
-
-```
-{sum+=$5}
-END{print sum}
-```
+END{print sum}</code></pre></td>
+<td><pre><code class="language-awk">{sum+=$5}
+END{print sum}</code></pre></td>
+</tr>
+</tbody>
+</table>
 
 There are additional builtin variables, like `OFS` (the Output Field Separator, which defaults to a space), but you are unlikely to need these.
 `man awk` has full details on all of the built-in variables.
@@ -185,18 +185,18 @@ There are also two special selectors, `BEGIN` and `END`, which run before any li
 
 That is, an awk program always looks, in principle, something like this
 
-```
-<selector1> { <expression1> }
-<selector2> { <expression2> }
+```nolanguage
+SELECTOR_1 { EXPRESSION_1 }
+SELECTOR_2 { EXPRESSION_2 }
 .
 .
 .
-<selectorN> { <expressionN> }
+SELECTOR_N { EXPRESSION_N }
 ```
 
 Newlines are not needed between the expressions, which is why tidbits like
 
-```
+```awk
 BEGIN{sum=0}{sum+=$1}END{print sum}
 ```
 
@@ -221,26 +221,26 @@ What this means is that if you want to slurp in a bunch of lines of data, and ma
 Consider what the classic "Hello world" program looks like in `awk`.
 Some other languages might write
 
-```
+```python
 print("Hello world!")
 ```
 
 But in awk, we must be careful to print it only once, not once for every line of input!
 Write
 
-```
+```awk
 BEGIN{print "Hello world!"}
 ```
 
 or
 
-```
+```awk
 END{print "Hello world!"}
 ```
 
 but not
 
-```
+```awk
 {print "Hello world!"}
 ```
 
@@ -253,13 +253,13 @@ But for the most part, you'll want to use one of the following simple kinds of m
 
 Check an arithmetic expression on a column or columns, as in:
 
-```
+```awk
 $2 * $3 > 100{print $0}
 ```
 
 Check that a column of input matches a regular expression[^2]:
 
-```
+```awk
 $2~/^1.*0$/{print $0}
 ```
 
@@ -267,13 +267,13 @@ This checks that column 2 matches `^1.*0$`, meaning it starts with a 1, ends wit
 
 Check that a column of input *does not* match a regular expression:
 
-```
+```awk
 $2!~/^1.*0$/{print $0}
 ```
 
 Check that a whole line of input matches a regular expression:
 
-```
+```awk
 /^1.*0$/{print $0}
 ```
 
@@ -282,13 +282,13 @@ Note that you don't need to write `$0~/.../`.
 
 Combine two or more selectors with `&&` for "and" or `||` for "or".
 
-```
+```awk
 $2~/^1.*0$/ || $3 % 2 == 1 {print $0}
 ```
 
 or
 
-```
+```awk
 $2~/^1.*0$/ && $3 % 2 == 1 {print $0}
 ```
 
@@ -300,7 +300,7 @@ In spite of the capabilities of the selectors to find lines of input which match
 These can be used inside of the `{ ... }` expressions.
 For example, imagine we filter to the lines we want, in order to collect an average from matching records:
 
-```
+```awk
 BEGIN{counter=0}
 $3==1||$4~/^90[[:digit:]]$/{counter+=1; sum +=$2}
 END{print sum/counter}
@@ -309,7 +309,7 @@ END{print sum/counter}
 But then we decide we want to collect a second average, in a subset of these conditions.
 `if` can make this easy!
 
-```
+```awk
 BEGIN{counter=0; counter2=0}
 $3==1||$4~/^90[[:digit:]]$/{counter+=1; sum +=$2; if ($5==0) {counter2+=1; sum2+=$6} }
 END{print sum/counter; print sum2/counter2}
