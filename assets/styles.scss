@@ -117,19 +117,12 @@ pre code {
   h6:before { content: ">>>>>>"; }
 
   // Resume Page
-  .resume-container {
+  .details .resume-container {
     font-size: 16px;
     background: #1D2021;
     color: #EBDBB2;
     border-radius: 10px;
     padding: 10px 10px 10px 10px;
-
-    .github-link {
-      position: absolute;
-      top: 0;
-      right: 0;
-      border: 0;
-    }
 
     h1:before { content: unset; }
 
