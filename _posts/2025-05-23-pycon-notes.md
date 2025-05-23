@@ -2,6 +2,8 @@
 layout: post
 ---
 
+![The Badge & Stickers](/assets/blog_content/pycon_2025/pycon_badge.png)
+
 A PyCon experiential review
 ====
 
@@ -154,3 +156,11 @@ vim as a file editor and vscode as an operating environment
 
 Prioritize note drop, then write about adversarial LLM usage
 </code></pre>
+
+---
+
+After the development sprints:
+
+![The Room, The End](/assets/blog_content/pycon_2025/post_sprint_messy_room.png)
+
+(In the moment, it felt like a tornado had ripped through. In retrospect, not so bad.)
