@@ -81,13 +81,13 @@ Emacs users and Vim users get along with one another very well. The communities
 include toxic, awful people _because of course they do_. But some of my best
 friends are Emacs users, and I don't even hold it against them!
 
-Emacs and Vim are *very* similar. They exist somewhere towards the middle of the
-spectrum between IDEs, which aim to offer a complete operating environment, and
-bare editors like `nano`, which try to only, very narrowly, edit text.
+Emacs and Vim are *very* similar. Out of the box, they exist somewhere towards
+the middle of the spectrum between IDEs, which aim to offer a complete operating
+environment, and bare editors like `nano`. Both Emacs and Vim can be tuned to be
+more complete and customized to your needs.
 
-There are cultural differences between the two editors -- Emacs folks tend to be
-much more into defining their own bespoke configuration, Vim folks tend to be
-looking for a palatable off-the-shelf experience which they can tweak.
+There are cultural differences between the two editors -- for example, Emacs
+folks tend to be much more into defining their own bespoke key combinations.
 And Emacs isn't modal, but most users effectively define minor modes with their
 custom keymaps.
 But the communities are more similar than different, and their editors are
