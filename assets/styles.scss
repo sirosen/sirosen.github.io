@@ -3,17 +3,83 @@
 ---
 
 // gruvbox colors
-$gruv-bg: #3C3836;
-$gruv-strong-bg: #282828;
-$gruv-weak-bg: #665C54;
-$gruv-fg: #EBDBB2;
-$gruv-weak-fg: #A89984;
-$gruv-yellow: #D79921;
-$gruv-bright-yellow: #FABD2F;
-$gruv-green: #98971A;
-$gruv-purple: #B16286;
-$gruv-red: #CC241D;
-$gruv-blue: #458588;
+$gruvbox-dark0-hard: #1D2021;
+$gruvbox-dark0: #282828;
+$gruvbox-dark0-soft: #32302F;
+$gruvbox-dark1: #3C3836;
+$gruvbox-dark2: #504945;
+$gruvbox-dark3: #665C54;
+$gruvbox-dark4: #7C6F64;
+
+$gruvbox-light0-hard: #F9F5D7;
+$gruvbox-light0: #FBF1C7;
+$gruvbox-light0-soft: #F2E5BC;
+$gruvbox-light1: #EBDBB2;
+$gruvbox-light2: #D5C4A1;
+$gruvbox-light3: #BDAE93;
+$gruvbox-light4: #A89984;
+
+$gruvbox-bright-red: #FB4934;
+$gruvbox-bright-green: #B8BB26;
+$gruvbox-bright-yellow: #FABD2F;
+$gruvbox-bright-blue: #83A598;
+$gruvbox-bright-purple: #D3869B;
+$gruvbox-bright-aqua: #8EC07C;
+$gruvbox-bright-orange: #FE8019;
+
+$gruvbox-neutral-red: #CC241D;
+$gruvbox-neutral-green: #98971A;
+$gruvbox-neutral-yellow: #D79921;
+$gruvbox-neutral-blue: #458588;
+$gruvbox-neutral-purple: #B16286;
+$gruvbox-neutral-aqua: #689D6A;
+$gruvbox-neutral-orange: #D65D0E;
+
+$gruvbox-faded-red: #9D0006;
+$gruvbox-faded-green: #79740E;
+$gruvbox-faded-yellow: #B57614;
+$gruvbox-faded-blue: #076678;
+$gruvbox-faded-purple: #8F3F71;
+$gruvbox-faded-aqua: #427B58;
+$gruvbox-faded-orange: #AF3A03;
+
+// map gruvbox colors to semantics
+:root {
+  --inverse-background: #{$gruvbox-light0};
+  --inverse-background3: #{$gruvbox-light3};
+  --inverse-foreground: #{$gruvbox-dark1};
+  --inverse-foreground-hc: #{$gruvbox-dark0}; // 'high contrast'
+  --inverse-foreground-hover: #{$gruvbox-faded-blue};
+
+  --background: #{$gruvbox-dark1};
+  --hard-background: #{$gruvbox-dark0-hard};
+  --soft-background: #{$gruvbox-dark0-soft};
+  --foreground: #{$gruvbox-light1};
+  --weak-foreground: #{$gruvbox-light4};
+
+  --header-indicator: #{$gruvbox-neutral-green};
+  --header: #{$gruvbox-neutral-aqua};
+
+  --alt-header: #{$gruvbox-bright-blue};
+
+  --link-color: #{$gruvbox-bright-blue};
+  --link-focus: #{$gruvbox-neutral-blue};
+
+  --border: #{$gruvbox-neutral-yellow};
+  --alt-border: #{$gruvbox-neutral-blue};
+  --sidebar-separator: #{$gruvbox-neutral-red};
+
+  --table-border: #{$gruvbox-dark3};
+
+  --active-tab: #{$gruvbox-neutral-yellow};
+  --inactive-tab-hover: #{$gruvbox-neutral-blue};
+  --inactive-tab-hover-fg: #{$gruvbox-bright-yellow};
+
+  --code-background: #{$gruvbox-dark0};
+  --code-border: #{$gruvbox-neutral-purple};
+  --inline-code: #{$gruvbox-bright-yellow};
+  --inline-code-bg: #{$gruvbox-dark0-soft};
+}
 
 
 @font-face {
@@ -27,22 +93,22 @@ $gruv-blue: #458588;
 header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 .navbar {
-  border-color: #BDAE93;
-  background: #FBF1C7;
-  background: linear-gradient(270deg, #BDAE93 0%, #FBF1C7 30%);
+  border-color: var(--inverse-background3);
+  background: var(--inverse-background);
+  background: linear-gradient(270deg, var(--inverse-background3) 0%, var(--inverse-background) 30%);
 
   .navbar-brand {
-    color: #3C3836;
+    color: var(--inverse-foreground);
     &:hover {
-      color: #076678;
+      color: var(--inverse-foreground-hover);
     }
   }
 
   #main-nav {
     .navbar-nav li a {
-      color: #3C3836;
+      color: var(--inverse-foreground);
       &:hover, &:active {
-        color: #076678;
+        color: var(--inverse-foreground-hover);
       }
     }
   }
@@ -52,48 +118,48 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 body {
   font-size: 22px;
   line-height: 1.5;
-  background: $gruv-bg;
+  background: var(--background);
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   font-weight: 400;
-  color: $gruv-fg;
+  color: var(--foreground);
 }
 
-hr { border-color: $gruv-yellow; }
+hr { border-color: var(--border); }
 
 a {
-  color: #83A598;
-  &:hover, &:focus { color: $gruv-blue; }
+  color: var(--link-color);
+  &:hover, &:focus { color: var(--link-focus); }
 }
 
 code {
-  color: $gruv-bright-yellow;
-  background-color: #32302F;
+  color: var(--inline-code);
+  background-color: var(--inline-code-bg);
 }
 pre {
   background: none;
   padding: 0 0 0 0;
-  border: 1px solid $gruv-purple;
+  border: 1px solid var(--code-border);
 }
 pre code {
   display: block;
   padding: 0.5rem;
-  color: $gruv-fg;
-  background-color: $gruv-strong-bg;
+  color: var(--foreground);
+  background-color: var(--code-background);
 }
 
 .opening-notes {
   .post-written-date {
-    color: $gruv-weak-fg;
+    color: var(--weak-foreground);
   }
   pre {
     border: none;
-    color: #EBDBB2;
+    color: var(--foreground);
   }
 }
 
 // sidebar separator
 .sidebarsep {
-  border-top: 2px solid $gruv-red;
+  border-top: 2px solid var(--sidebar-separator);
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -102,10 +168,10 @@ pre code {
   // Header styles for body
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
-    color: #689D6A;
+    color: var(--header);
 
     &:before {
-      color: $gruv-green;
+      color: var(--header-indicator);
       padding-right: 0.3em;
     }
   }
@@ -120,23 +186,23 @@ pre code {
   // Resume Page
   details .resume-container {
     font-size: 16px;
-    background: #1D2021;
-    color: #EBDBB2;
+    background: var(--hard-background);
+    color: var(--foreground);
     border-radius: 10px;
     padding: 10px 10px 10px 10px;
 
     h1:before { content: unset; }
 
     .section-title {
-      background: #3c3836;
-      color: #83A598;
+      background: var(--background);
+      color: var(--alt-header);
       border-radius: 16px 2px;
       padding: 6px 6px 6px 6px;
     }
 
     .subsection-header {
-      background: #32302F;
-      color: #8EC07C;
+      background: var(--soft-background);
+      color: var(--header);
       border-radius: 16px 2px;
       padding: 6px 6px 6px 6px;
       margin-bottom: 5px;
@@ -145,18 +211,18 @@ pre code {
 
   // adjust color of tables
   table {
-    color: $gruv-fg;
+    color: var(--foreground);
     &.table-bordered {
-      border-color: $gruv-weak-bg;
+      border-color: var(--table-border);
       td {
-        border-color: $gruv-weak-bg;
+        border-color: var(--table-border);
       }
     }
   }
 
   // override bootstrap tabs, mostly colors but also some spacing
   .nav-tabs {
-    border-bottom-color: $gruv-yellow;
+    border-bottom-color: var(--border);
 
     li.nav-item {
       margin-left: 0.5rem;
@@ -165,21 +231,21 @@ pre code {
 
     li.nav-item>a.nav-link {
       &.active, &.active:hover, &.active:focus {
-        background-color: $gruv-yellow;
-        border-color: $gruv-yellow;
-        color: $gruv-strong-bg;
+        background-color: var(--active-tab);
+        border-color: var(--active-tab);
+        color: var(--inverse-foreground-hc);
       }
       &:hover, &:focus {
-        background-color: $gruv-blue;
-        color: #FABD2F;
-        border-color: $gruv-blue $gruv-blue $gruv-yellow;
+        background-color: var(--inactive-tab-hover);
+        color: var(--inactive-tab-hover-fg);
+        border-color: var(--inactive-tab-hover) var(--inactive-tab-hover) var(--active-tab);
       }
     }
   }
 
   // style blockquotes
   blockquote {
-    border-left: 3px solid $gruv-blue;
+    border-left: 3px solid var(--alt-border);
     padding-left: 15px;
   }
 }
@@ -187,6 +253,6 @@ pre code {
 // adjust background color of sidebar buttons
 .sidebar-buttons {
   .btn {
-    background-color: #BDAE93;
+    background-color: var(--inverse-background3);
   }
 }
