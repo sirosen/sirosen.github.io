@@ -43,10 +43,12 @@ $gruvbox-faded-purple: #8F3F71;
 $gruvbox-faded-aqua: #427B58;
 $gruvbox-faded-orange: #AF3A03;
 
+$gruvbox-neutral-gray: #928374;
+
 // map gruvbox colors to semantics
 :root {
   --inverse-background: #{$gruvbox-light0};
-  --inverse-background3: #{$gruvbox-light3};
+  --inverse-soft-background: #{$gruvbox-light3};
   --inverse-foreground: #{$gruvbox-dark1};
   --inverse-foreground-hc: #{$gruvbox-dark0}; // 'high contrast'
   --inverse-foreground-hover: #{$gruvbox-faded-blue};
@@ -81,10 +83,48 @@ $gruvbox-faded-orange: #AF3A03;
   --inline-code-bg: #{$gruvbox-dark0-soft};
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --inverse-background: #{$gruvbox-dark1};
+    --inverse-soft-background: #{$gruvbox-dark4};
+    --inverse-foreground: #{$gruvbox-light1};
+    --inverse-foreground-hc: #{$gruvbox-light0}; // 'high contrast'
+    --inverse-foreground-hover: #{$gruvbox-bright-blue};
+
+    --background: #{$gruvbox-light1};
+    --hard-background: #{$gruvbox-light0-hard};
+    --soft-background: #{$gruvbox-light0-soft};
+    --foreground: #{$gruvbox-dark1};
+    --weak-foreground: #{$gruvbox-dark4};
+
+    --header-indicator: #{$gruvbox-neutral-green};
+    --header: #{$gruvbox-neutral-aqua};
+
+    --alt-header: #{$gruvbox-faded-blue};
+
+    --link-color: #{$gruvbox-faded-blue};
+    --link-focus: #{$gruvbox-neutral-blue};
+
+    --border: #{$gruvbox-neutral-yellow};
+    --alt-border: #{$gruvbox-neutral-blue};
+    --sidebar-separator: #{$gruvbox-neutral-red};
+
+    --table-border: #{$gruvbox-light3};
+
+    --active-tab: #{$gruvbox-neutral-yellow};
+    --inactive-tab-hover: #{$gruvbox-neutral-blue};
+    --inactive-tab-hover-fg: #{$gruvbox-faded-yellow};
+
+    --code-background: #{$gruvbox-light0};
+    --code-border: #{$gruvbox-neutral-purple};
+    --inline-code: #{$gruvbox-faded-red};
+    --inline-code-bg: #{$gruvbox-light2};
+  }
+}
 
 @font-face {
   font-family: 'Allerta';
-  font-style: normal;
+  font-style: norm4l;
   font-weight: 400;
   src: url(/assets/fonts/allerta.ttf) format('truetype');
 }
@@ -93,9 +133,9 @@ $gruvbox-faded-orange: #AF3A03;
 header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 .navbar {
-  border-color: var(--inverse-background3);
+  border-color: var(--inverse-soft-background);
   background: var(--inverse-background);
-  background: linear-gradient(270deg, var(--inverse-background3) 0%, var(--inverse-background) 30%);
+  background: linear-gradient(270deg, var(--inverse-soft-background) 0%, var(--inverse-background) 30%);
 
   .navbar-brand {
     color: var(--inverse-foreground);
@@ -134,6 +174,9 @@ a {
 code {
   color: var(--inline-code);
   background-color: var(--inline-code-bg);
+  border-radius: 4px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 pre {
   background: none;
@@ -253,6 +296,7 @@ pre code {
 // adjust background color of sidebar buttons
 .sidebar-buttons {
   .btn {
-    background-color: var(--inverse-background3);
+    background-color: var(--inverse-soft-background);
+    color: var(--inverse-foreground);
   }
 }
