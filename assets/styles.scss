@@ -128,7 +128,7 @@ $gruvbox-neutral-gray: #928374;
 
 @font-face {
   font-family: 'Allerta';
-  font-style: norm4l;
+  font-style: normal;
   font-weight: 400;
   src: url(/assets/fonts/allerta.ttf) format('truetype');
 }
@@ -164,7 +164,7 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 // Primary content
 body {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.5;
   background: var(--background);
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
@@ -199,6 +199,8 @@ pre code {
 }
 
 .opening-notes {
+  font-size: 14px;
+
   .post-written-date {
     color: var(--weak-foreground);
   }
