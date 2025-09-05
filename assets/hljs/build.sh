@@ -2,9 +2,11 @@
 set -euo pipefail
 
 VERSION="11.2.0"
-THEMES_URL="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/${VERSION}/styles"
+THEMES_URL="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@${VERSION}/build/styles"
 wget "${THEMES_URL}/base16/gruvbox-dark-medium.min.css" \
-  -O theme.min.css
+  -O theme-dark.min.css
+wget "${THEMES_URL}/base16/gruvbox-light-medium.min.css" \
+  -O theme-light.min.css
 
 if [ -d "_build" ]; then
   echo "Old build dir present. Remove with 'rm -r _build' and try again"
