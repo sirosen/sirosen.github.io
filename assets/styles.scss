@@ -59,6 +59,8 @@ $gruvbox-neutral-gray: #928374;
   --foreground: #{$gruvbox-light1};
   --weak-foreground: #{$gruvbox-light4};
 
+  --navbar-toggle-background: #{$gruvbox-light3};
+
   --header-indicator: #{$gruvbox-neutral-green};
   --header: #{$gruvbox-neutral-aqua};
 
@@ -96,6 +98,8 @@ $gruvbox-neutral-gray: #928374;
     --soft-background: #{$gruvbox-light0-soft};
     --foreground: #{$gruvbox-dark1};
     --weak-foreground: #{$gruvbox-dark4};
+
+    --navbar-toggle-background: #{$gruvbox-light3};
 
     --header-indicator: #{$gruvbox-neutral-green};
     --header: #{$gruvbox-neutral-aqua};
@@ -142,6 +146,10 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
     &:hover {
       color: var(--inverse-foreground-hover);
     }
+  }
+  .navbar-toggler {
+    background-color: var(--navbar-toggle-background);
+    border-color: var(--background);
   }
 
   #main-nav {
