@@ -466,8 +466,6 @@ It's not clear what they do, and you mgiht try them out on your data just to try
 
 Hopefully, with just a little bit more effort to make them understandable, these magical robot farts can be seen to have a consistent structure and logic.
 
-***
-
 
 [^1]: 'shell' means bash or zsh. 'terminal' means anything where you can input commands like `grep`.
 [^2]: This guide will not cover the many fabulous powers of regular expressions, but they are very useful. Be aware that regular expressions can vary a little depending on the implementation being used. awk's regular expressions are more than satisfactory, similar to what `grep` offers, but can't do everything that regular expressions in Python, R, and other languages can do.
