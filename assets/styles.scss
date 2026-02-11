@@ -301,6 +301,13 @@ pre code {
     border-left: 3px solid var(--alt-border);
     padding-left: 15px;
   }
+
+  // style footnotes
+  .footnotes {
+    border-top: 1px dashed;
+    padding-top: 1em;
+    margin-top: 2em;
+  }
 }
 
 // adjust background color of sidebar buttons
