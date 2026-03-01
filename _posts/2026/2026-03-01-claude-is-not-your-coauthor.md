@@ -131,7 +131,7 @@ Not that there's anything deeply wrong with marketing your product.
 I just don't think the code artifacts of the open source community are the
 appropriate forum for that.
 
-[^4]: It really seems like Claude is the only tool which appears in commits like this, presently.
+[^4]: It really seems like Claude is the only LLM which appears in commits like this, presently.
       I'm sure other vendors will start doing it too.
 
 It's possible that the `pip-tools` policy will adjust to have an explicit stance
@@ -141,3 +141,24 @@ For now, I won't demand that anyone changes what they're doing.
 
 But please, consider removing those tags.
 And if you don't feel comfortable owning the code you're submitting, don't submit it.
+
+
+***
+
+### *Addendum*
+
+It has rightly been pointed out to me that `pre-commit` and `dependabot`, among
+others, have long used these same tags.
+To date, neither I nor anyone else that I know of has complained about that
+usage.
+
+I find the nature of the tools relevant, in that nobody mistakes these
+automations for having any agency or ownership over the changes they produce.
+However, *unlike* `pre-commit` and `dependabot`, developers sometimes refer to
+LLMs as their collaborators -- which clearly implies a different relationship
+with the tools.
+
+If the outcome of my argument is that we must take an "all or nothing" approach,
+and excise these annotations for non-LLM tools from projects as well -- arguing
+that Dependabot commits advertise GitHub, just as Claude commits advertise
+Anthropic  -- then I am comfortable making that tradeoff.
