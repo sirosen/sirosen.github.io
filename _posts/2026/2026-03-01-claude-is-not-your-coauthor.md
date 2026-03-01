@@ -28,7 +28,7 @@ how we treat LLMs as they appear in commit `Co-Authored-By` lines.
 
 If you're not familiar with it, the `Co-Authored-By` annotation is a line in a
 commit message used to cite your co-authors.
-I use it all the time -- I even have editor macros for adding them.
+I use it all the time -- I even have editor macros for adding co-authors.
 It's a great way to share credit with your ~~co-conspirators~~ colleagues and
 peers.
 For example, here's what a commit[^1] with a co-author looks like:
