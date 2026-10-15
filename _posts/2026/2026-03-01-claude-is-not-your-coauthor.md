@@ -95,7 +95,7 @@ and honestly with the maintainers.
 
 And many policies don't say anything at all about this.
 For example, the `pip-tools` one
-[I just wrote](https://github.com/jazzband/pip-tools/blob/7cbd492ffca99436f57e038951a0c563f2511016/CONTRIBUTING.md#llm-generated-contributions),
+[I just wrote](https://github.com/pypa/pip-tools/blob/7cbd492ffca99436f57e038951a0c563f2511016/CONTRIBUTING.md#llm-generated-contributions),
 with a lot of help and community input, does not mention the co-authored lines,
 and neither does the
 [SciPy policy](https://github.com/scipy/scipy/blob/d5d3faa73f9822859851bdb0a6f5c936b38a5b2f/doc/source/dev/conduct/ai_policy.rst)
