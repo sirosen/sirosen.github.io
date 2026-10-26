@@ -133,6 +133,10 @@ $gruvbox-neutral-gray: #928374;
   src: url(/assets/fonts/allerta.ttf) format('truetype');
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 // Navbar
 header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
@@ -171,19 +175,44 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 body {
   font-size: 20px;
   line-height: 1.5;
-  background: var(--background);
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   font-weight: 400;
+
+  background: var(--background);
   color: var(--foreground);
+
+  margin: 0;
 }
 
-hr { border-color: var(--border); }
+p, pre, blockquote {
+  margin: 0 0 1rem;
+}
+
+ol, ul {
+  margin: 0 0 1rem;
+
+  ol, ul {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid;
+  border-color: var(--border);
+}
 
 a {
+  text-decoration: none;
   color: var(--link-color);
-  &:hover, &:focus { color: var(--link-focus); }
+  &:hover, &:focus {
+    text-decoration: underline;
+    color: var(--link-focus);
+  }
 }
 
+// base code styling, partly overwritten by HLJS
 code {
   color: var(--inline-code);
   background-color: var(--inline-code-bg);
@@ -192,6 +221,7 @@ code {
   padding-right: 3px;
 }
 pre {
+  overflow-x: auto;
   background: none;
   padding: 0 0 0 0;
   border: 1px solid var(--code-border);
@@ -201,6 +231,11 @@ pre code {
   padding: 0.5rem;
   color: var(--foreground);
   background-color: var(--code-background);
+  font-size: inherit;
+}
+code, pre {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 90%;
 }
 
 .opening-notes {
@@ -225,25 +260,38 @@ pre code {
 #main-content {
   // Header styles for body
   h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    margin-top: 0;
+
+    font-weight: 500;
+    line-height: 1.2;
+
     font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif;
     color: var(--header);
 
     &:before {
       color: var(--header-indicator);
-      padding-right: 0.3em;
+      padding-right: 0.3rem;
     }
   }
 
   h1:before { content: ">"; }
+  h1 { font-size: 2.5rem; }
   h2:before { content: ">>"; }
+  h2 { font-size: 2rem; }
   h3:before { content: ">>>"; }
+  h3 { font-size: 1.75rem; }
   h4:before { content: ">>>>"; }
+  h4 { font-size: 1.5rem; }
   h5:before { content: ">>>>>"; }
+  h5 { font-size: 1.25rem; }
   h6:before { content: ">>>>>>"; }
+  h6 { font-size: 1rem; }
 
   img {
     max-width: 100%;
     height: auto;
+    vertical-align: middle;
   }
 
   // Resume Page
@@ -272,14 +320,20 @@ pre code {
     }
   }
 
-  // adjust color of tables
   table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+
     color: var(--foreground);
-    &.table-bordered {
-      border-color: var(--table-border);
-      td {
-        border-color: var(--table-border);
+
+    &.bordered {
+      td, th {
+        border: 1px solid var(--table-border);
+        padding: 0.75rem;
       }
+
+      border: 1px solid var(--table-border);
     }
   }
 
@@ -311,6 +365,14 @@ pre code {
   blockquote {
     border-left: 3px solid var(--alt-border);
     padding-left: 15px;
+
+    footer {
+      font-size: 80%;
+      color: var(--weak-foreground);
+      &::before {
+        content: "\2014\00A0";
+      }
+    }
   }
 
   // style footnotes

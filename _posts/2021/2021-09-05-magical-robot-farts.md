@@ -37,7 +37,7 @@ A lot of people interact with a terminal or shell[^1], but don't spend all day w
 This leads to a common situation in which we know that the shell can solve a problem, but we're not sure quite how to do it.
 
 > I want to extract the second column from this CSV, but only for rows where the fifth column is '0' or 'nil'.
-> <footer class="blockquote-footer">Poor Unfortunate Soul</footer>
+> <footer>Poor Unfortunate Soul</footer>
 
 After a bunch of searching, we come to a Stack Overflow answer that serves up this tidbit:
 
@@ -47,7 +47,7 @@ After a bunch of searching, we come to a Stack Overflow answer that serves up th
 > awk -F',' '$3==1||$12!~/^p/{sum4+=$4;sum5+=$5}END{print (sum4/NR)/sum5}'
 > ```
 >
-> <footer class="blockquote-footer">T3H_L337z0rz_SO_UZER</footer>
+> <footer>T3H_L337z0rz_SO_UZER</footer>
 
 After a bunch of fiddling around, you may or may not be able to adapt this *magical robot fart* to your use case.
 
@@ -55,7 +55,7 @@ But wouldn't it be better, wouldn't it be easier, if we knew what we were doing?
 
 ## Cheat Sheet
 
-<table class="table table-bordered">
+<table class="bordered">
 <tbody>
 
 <tr>
@@ -145,7 +145,7 @@ awk [OPTIONS] PROGRAM FILE
 
 When `awk` is given a file on standard input (e.g. in a pipeline), then the filename argument is omitted.
 
-<table class="table table-bordered">
+<table class="bordered">
 <thead>
 <tr><td>Reading from a file</td><td>Reading from stdin</td></tr>
 </thead>
@@ -395,7 +395,7 @@ Empty input? Not good.
 If a variable is used with operator-assignment like `+=` or `-=` without having been previously declared, it gets a value of `0` to start.
 That means that the two following programs are identical in meaning:
 
-<table class="table table-bordered">
+<table class="bordered">
 <tbody>
 <tr>
 <td><pre><code class="language-awk"># sum is set to 0 in a BEGIN block
@@ -425,7 +425,7 @@ It defaults to a single space.
 However, the arguments to `print` may also be given *without* commas, meaning that they are combined by string concatenation (no spaces).
 The difference is not always obvious.
 
-<table class="table table-bordered">
+<table class="bordered">
 <tbody>
 <tr>
 <td>
