@@ -11,13 +11,8 @@ function setColorSchemeCallback() {
   }
 }
 
-/* on-load customization; mark images as fluid */
+/* on-load customization */
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#main-content img').forEach(function(elem) {
-      elem.classList.add("img-fluid");
-  });
-
-
   // if we can detect light-mode, switch out hljs theme
   if (window.matchMedia) {
     setColorSchemeCallback();

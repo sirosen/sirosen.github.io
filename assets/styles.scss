@@ -137,6 +137,7 @@ $gruvbox-neutral-gray: #928374;
 header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 .navbar {
+  margin-bottom: 1.5rem;
   border-color: var(--inverse-soft-background);
   background: var(--inverse-background);
   background: linear-gradient(270deg, var(--inverse-soft-background) 0%, var(--inverse-background) 30%);
@@ -153,10 +154,14 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
   }
 
   #main-nav {
-    .navbar-nav li a {
-      color: var(--inverse-foreground);
-      &:hover, &:active {
-        color: var(--inverse-foreground-hover);
+    .navbar-nav {
+      margin-right: auto;
+
+      li a {
+        color: var(--inverse-foreground);
+        &:hover, &:active {
+          color: var(--inverse-foreground-hover);
+        }
       }
     }
   }
@@ -236,6 +241,11 @@ pre code {
   h5:before { content: ">>>>>"; }
   h6:before { content: ">>>>>>"; }
 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
   // Resume Page
   details .resume-container {
     font-size: 16px;
@@ -275,6 +285,7 @@ pre code {
 
   // override bootstrap tabs, mostly colors but also some spacing
   .nav-tabs {
+    margin-bottom: 0.5rem;
     border-bottom-color: var(--border);
 
     li.nav-item {
@@ -310,10 +321,27 @@ pre code {
   }
 }
 
-// adjust background color of sidebar buttons
+// style sidebar buttons
 .sidebar-buttons {
-  .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .nav-button {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+
+    border: none;
+    border-radius: 0.25rem;
+
     background-color: var(--inverse-soft-background);
     color: var(--inverse-foreground);
+
+    padding: .375rem .75rem;
   }
 }
