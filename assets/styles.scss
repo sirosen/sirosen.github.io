@@ -75,9 +75,9 @@ $gruvbox-neutral-gray: #928374;
 
   --table-border: #{$gruvbox-dark3};
 
-  --active-tab: #{$gruvbox-neutral-yellow};
-  --inactive-tab-hover: #{$gruvbox-neutral-blue};
-  --inactive-tab-hover-fg: #{$gruvbox-bright-yellow};
+  --active-section: #{$gruvbox-neutral-yellow};
+  --inactive-section-hover: #{$gruvbox-neutral-blue};
+  --inactive-section-hover-fg: #{$gruvbox-bright-yellow};
 
   --code-background: #{$gruvbox-dark0};
   --code-border: #{$gruvbox-neutral-purple};
@@ -115,9 +115,9 @@ $gruvbox-neutral-gray: #928374;
 
     --table-border: #{$gruvbox-light3};
 
-    --active-tab: #{$gruvbox-neutral-yellow};
-    --inactive-tab-hover: #{$gruvbox-neutral-blue};
-    --inactive-tab-hover-fg: #{$gruvbox-faded-yellow};
+    --active-section: #{$gruvbox-neutral-yellow};
+    --inactive-section-hover: #{$gruvbox-neutral-blue};
+    --inactive-section-hover-fg: #{$gruvbox-faded-yellow};
 
     --code-background: #{$gruvbox-light0};
     --code-border: #{$gruvbox-neutral-purple};
@@ -409,29 +409,34 @@ code, pre {
     }
   }
 
-  // override bootstrap tabs, mostly colors but also some spacing
-  .nav-tabs {
-    margin-bottom: 0.5rem;
-    border-bottom-color: var(--border);
+  // table of contents
+  .page-toc {
+    margin-bottom: 1.5rem;
+    padding-left: 15px;
+    border-left: 3px solid var(--alt-border);
 
-    li.nav-item {
-      margin-left: 0.5rem;
-      &:first-child { margin-left: 0; }
+    .page-toc-label {
+      font-size: 80%;
+      color: var(--weak-foreground);
     }
 
-    li.nav-item>a.nav-link {
-      &.active, &.active:hover, &.active:focus {
-        background-color: var(--active-tab);
-        border-color: var(--active-tab);
-        color: var(--inverse-foreground-hc);
-      }
-      &:hover, &:focus {
-        background-color: var(--inactive-tab-hover);
-        color: var(--inactive-tab-hover-fg);
-        border-color: var(--inactive-tab-hover) var(--inactive-tab-hover) var(--active-tab);
-      }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a::before {
+      content: "↫";
+      rotate: -90deg;
+      display: inline-block;
+      padding-right: 0.4rem;
+      color: var(--header-indicator);
     }
   }
+  .page-section + .page-section { margin-top: 2rem; }
+  // highlight the section most recently jumped to
+  .page-section:target > h2 { color: var(--active-section); }
 
   // style blockquotes
   blockquote {

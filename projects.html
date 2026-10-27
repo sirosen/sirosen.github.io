@@ -4,44 +4,32 @@ layout: default
 
 <p>Please note that I hardly ever update this page. These are pretty old.</p>
 
-<ul id="projtabs" class="nav nav-tabs" role="tablist">
-  <li class="nav-item">
-    <a id="toys-tab"
-       class="nav-link active"
-       href="#toys"
-       aria-controls="toys"
-       aria-selected="true"
-       data-toggle="tab"
-       role="tab">Toys</a>
-  </li>
-  <li class="nav-item">
-    <a id="openresume-tab"
-       class="nav-link"
-       href="#openresume"
-       aria-controls="openresume"
-       aria-selected="false"
-       data-toggle="tab"
-       role="tab">OpenResume</a>
-  </li>
-  <li class="nav-item">
-    <a id="manticore-tab"
-       class="nav-link"
-       href="#manticore"
-       aria-controls="manticore"
-       aria-selected="true"
-       data-toggle="tab"
-       role="tab">manticore</a>
-  </li>
-</ul>
+<nav class="page-toc" aria-labelledby="page-toc-label">
+  <span id="page-toc-label" class="page-toc-label">On this page</span>
+  <ul>
+    <li><a href="#toys">Toys</a></li>
+    <li><a href="#openresume">OpenResume</a></li>
+    <li><a href="#manticore">manticore</a></li>
+  </ul>
+</nav>
 
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="toys">
-    {% include projects/toys.html %}
-  </div>
-  <div class="tab-pane fade" id="manticore">
-    {% include projects/manticore.html %}
-  </div>
-  <div class="tab-pane fade" id="openresume">
-    {% include projects/openresume.html %}
-  </div>
-</div>
+<hr>
+
+<section id="toys" class="page-section">
+  <h2>Toys</h2>
+  {% include projects/toys.html %}
+</section>
+
+<hr>
+
+<section id="openresume" class="page-section">
+  <h2>OpenResume</h2>
+  {% include projects/openresume.html %}
+</section>
+
+<hr>
+
+<section id="manticore" class="page-section">
+  <h2>manticore</h2>
+  {% include projects/manticore.html %}
+</section>
