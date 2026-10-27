@@ -133,6 +133,25 @@ $gruvbox-neutral-gray: #928374;
   src: url(/assets/fonts/allerta.ttf) format('truetype');
 }
 
+// Layout
+$breakpoint-md: 768px;
+
+#main-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 30px;
+
+  width: 92%;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+@media (min-width: $breakpoint-md) {
+  #main-content {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    width: min(88%, 1140px);
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -334,6 +353,19 @@ code, pre {
       }
 
       border: 1px solid var(--table-border);
+    }
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    margin-bottom: 1rem;
+    table { margin-bottom: 0; }
+  }
+  @media (min-width: $breakpoint-md) {
+    // allow overflow into the sidebar space on large displays
+    // potential future refactor: make this a separate utility class
+    .table-scroll {
+      overflow-x: visible;
     }
   }
 

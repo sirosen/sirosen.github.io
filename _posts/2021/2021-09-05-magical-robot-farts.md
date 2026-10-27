@@ -55,6 +55,7 @@ But wouldn't it be better, wouldn't it be easier, if we knew what we were doing?
 
 ## Cheat Sheet
 
+<div class="table-scroll">
 <table class="bordered">
 <tbody>
 
@@ -115,6 +116,7 @@ But wouldn't it be better, wouldn't it be easier, if we knew what we were doing?
 
 </tbody>
 </table>
+</div>
 
 
 ## Explanation
@@ -145,6 +147,7 @@ awk [OPTIONS] PROGRAM FILE
 
 When `awk` is given a file on standard input (e.g. in a pipeline), then the filename argument is omitted.
 
+<div class="table-scroll">
 <table class="bordered">
 <thead>
 <tr><td>Reading from a file</td><td>Reading from stdin</td></tr>
@@ -156,6 +159,7 @@ When `awk` is given a file on standard input (e.g. in a pipeline), then the file
 </tr>
 </tbody>
 </table>
+</div>
 
 ### Options
 
@@ -395,6 +399,7 @@ Empty input? Not good.
 If a variable is used with operator-assignment like `+=` or `-=` without having been previously declared, it gets a value of `0` to start.
 That means that the two following programs are identical in meaning:
 
+<div class="table-scroll">
 <table class="bordered">
 <tbody>
 <tr>
@@ -408,6 +413,7 @@ END{print sum}</code></pre></td>
 </tr>
 </tbody>
 </table>
+</div>
 
 When you see `awk` code which seems to materialize variables out of nowhere, it's a good bet that this is what's going on.
 
@@ -425,6 +431,7 @@ It defaults to a single space.
 However, the arguments to `print` may also be given *without* commas, meaning that they are combined by string concatenation (no spaces).
 The difference is not always obvious.
 
+<div class="table-scroll">
 <table class="bordered">
 <tbody>
 <tr>
@@ -443,6 +450,7 @@ $ echo '' | awk 'END{print "1" "2"}'
 </tr>
 </tbody>
 </table>
+</div>
 
 
 #### awk vs gawk
