@@ -50,7 +50,6 @@ $gruvbox-neutral-gray: #928374;
   --inverse-background: #{$gruvbox-light0};
   --inverse-soft-background: #{$gruvbox-light3};
   --inverse-foreground: #{$gruvbox-dark1};
-  --inverse-foreground-hc: #{$gruvbox-dark0}; // 'high contrast'
   --inverse-foreground-hover: #{$gruvbox-faded-blue};
 
   --background: #{$gruvbox-dark1};
@@ -76,8 +75,6 @@ $gruvbox-neutral-gray: #928374;
   --table-border: #{$gruvbox-dark3};
 
   --active-section: #{$gruvbox-neutral-yellow};
-  --inactive-section-hover: #{$gruvbox-neutral-blue};
-  --inactive-section-hover-fg: #{$gruvbox-bright-yellow};
 
   --code-background: #{$gruvbox-dark0};
   --code-border: #{$gruvbox-neutral-purple};
@@ -85,12 +82,12 @@ $gruvbox-neutral-gray: #928374;
   --inline-code-bg: #{$gruvbox-dark0-soft};
 }
 
-@media (prefers-color-scheme: light) {
+// light palette, also used when printing
+@media (prefers-color-scheme: light), print {
   :root {
     --inverse-background: #{$gruvbox-dark1};
     --inverse-soft-background: #{$gruvbox-dark4};
     --inverse-foreground: #{$gruvbox-light1};
-    --inverse-foreground-hc: #{$gruvbox-light0}; // 'high contrast'
     --inverse-foreground-hover: #{$gruvbox-bright-blue};
 
     --background: #{$gruvbox-light1};
@@ -116,8 +113,6 @@ $gruvbox-neutral-gray: #928374;
     --table-border: #{$gruvbox-light3};
 
     --active-section: #{$gruvbox-neutral-yellow};
-    --inactive-section-hover: #{$gruvbox-neutral-blue};
-    --inactive-section-hover-fg: #{$gruvbox-faded-yellow};
 
     --code-background: #{$gruvbox-light0};
     --code-border: #{$gruvbox-neutral-purple};
@@ -520,5 +515,32 @@ code, pre {
     color: var(--inverse-foreground);
 
     padding: .375rem .75rem;
+  }
+}
+
+// Print
+@media print {
+  body {
+    font-size: 12pt;
+    background: none;
+  }
+  // only print the page content
+  .nav-toggle, #main-nav, #sidebar { display: none; }
+  .site-nav {
+    background: none;
+    padding: 0;
+    .site-brand { color: var(--foreground); }
+  }
+  #main-content {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+  pre { white-space: pre-wrap; }
+  // show where external links go
+  main a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+    color: var(--weak-foreground);
   }
 }
