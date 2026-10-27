@@ -395,6 +395,26 @@ code, pre {
       padding: 6px 6px 6px 6px;
       margin-bottom: 5px;
     }
+
+    // minimal stand-in for the bootstrap 4 grid used by OpenResume output
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    [class*="col-sm-"] {
+      flex: 1 1 100%; // stack on narrow screens
+      min-width: 0;
+      overflow-wrap: anywhere; // long URLs break instead of overflowing
+    }
+    @media (min-width: 576px) {
+      // gutters are padding inside the columns, so plain percentages sum to
+      // 100%; allowing shrink keeps rounding from forcing a wrap
+      [class*="col-sm-"] { padding-right: 1rem; }
+      [class*="col-sm-"]:last-child { padding-right: 0; }
+      .col-sm-4 { flex: 0 1 33.333%; }
+      .col-sm-6 { flex: 0 1 50%; }
+      .col-sm-8 { flex: 0 1 66.667%; }
+    }
   }
 
   table {
