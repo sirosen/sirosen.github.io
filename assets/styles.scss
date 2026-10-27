@@ -46,7 +46,9 @@ $gruvbox-faded-orange: #AF3A03;
 $gruvbox-neutral-gray: #928374;
 
 // map gruvbox colors to semantics
-:root {
+@mixin dark-palette {
+  color-scheme: dark;
+
   --inverse-background: #{$gruvbox-light0};
   --inverse-soft-background: #{$gruvbox-light3};
   --inverse-foreground: #{$gruvbox-dark1};
@@ -82,43 +84,53 @@ $gruvbox-neutral-gray: #928374;
   --inline-code-bg: #{$gruvbox-dark0-soft};
 }
 
-// light palette, also used when printing
-@media (prefers-color-scheme: light), print {
-  :root {
-    --inverse-background: #{$gruvbox-dark1};
-    --inverse-soft-background: #{$gruvbox-dark4};
-    --inverse-foreground: #{$gruvbox-light1};
-    --inverse-foreground-hover: #{$gruvbox-bright-blue};
+@mixin light-palette {
+  color-scheme: light;
 
-    --background: #{$gruvbox-light1};
-    --hard-background: #{$gruvbox-light0-hard};
-    --soft-background: #{$gruvbox-light0-soft};
-    --foreground: #{$gruvbox-dark1};
-    --weak-foreground: #{$gruvbox-dark4};
+  --inverse-background: #{$gruvbox-dark1};
+  --inverse-soft-background: #{$gruvbox-dark4};
+  --inverse-foreground: #{$gruvbox-light1};
+  --inverse-foreground-hover: #{$gruvbox-bright-blue};
 
-    --navbar-toggle-background: #{$gruvbox-light3};
+  --background: #{$gruvbox-light1};
+  --hard-background: #{$gruvbox-light0-hard};
+  --soft-background: #{$gruvbox-light0-soft};
+  --foreground: #{$gruvbox-dark1};
+  --weak-foreground: #{$gruvbox-dark4};
 
-    --header-indicator: #{$gruvbox-neutral-green};
-    --header: #{$gruvbox-neutral-aqua};
+  --navbar-toggle-background: #{$gruvbox-light3};
 
-    --alt-header: #{$gruvbox-faded-blue};
+  --header-indicator: #{$gruvbox-neutral-green};
+  --header: #{$gruvbox-neutral-aqua};
 
-    --link-color: #{$gruvbox-faded-blue};
-    --link-focus: #{$gruvbox-neutral-blue};
+  --alt-header: #{$gruvbox-faded-blue};
 
-    --border: #{$gruvbox-neutral-yellow};
-    --alt-border: #{$gruvbox-neutral-blue};
-    --sidebar-separator: #{$gruvbox-neutral-red};
+  --link-color: #{$gruvbox-faded-blue};
+  --link-focus: #{$gruvbox-neutral-blue};
 
-    --table-border: #{$gruvbox-light3};
+  --border: #{$gruvbox-neutral-yellow};
+  --alt-border: #{$gruvbox-neutral-blue};
+  --sidebar-separator: #{$gruvbox-neutral-red};
 
-    --active-section: #{$gruvbox-neutral-yellow};
+  --table-border: #{$gruvbox-light3};
 
-    --code-background: #{$gruvbox-light0};
-    --code-border: #{$gruvbox-neutral-purple};
-    --inline-code: #{$gruvbox-faded-red};
-    --inline-code-bg: #{$gruvbox-light2};
-  }
+  --active-section: #{$gruvbox-neutral-yellow};
+
+  --code-background: #{$gruvbox-light0};
+  --code-border: #{$gruvbox-neutral-purple};
+  --inline-code: #{$gruvbox-faded-red};
+  --inline-code-bg: #{$gruvbox-light2};
+}
+
+// apply palettes: data-theme on <html> forces a theme, otherwise follow the
+// system preference (see main.js); printing always uses the light palette
+:root { @include dark-palette; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { @include light-palette; }
+}
+:root[data-theme="light"] { @include light-palette; }
+@media print {
+  :root { @include light-palette; }
 }
 
 @font-face {
@@ -196,6 +208,23 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 }
 .nav-toggle:focus-visible { outline: 2px solid var(--link-focus); outline-offset: 2px; }
 
+// color theme toggle, shown by main.js
+.theme-toggle {
+  // sit beside the menu toggle on mobile, at the far right on desktop
+  margin: 0 .5rem 0 auto;
+  height: 2rem;
+  padding: 0 .5rem;
+  border: 1px solid currentColor;
+  border-radius: .25rem;
+  background: none;
+  color: var(--inverse-foreground);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  &:hover { color: var(--inverse-foreground-hover); }
+  &:focus-visible { outline: 2px solid var(--link-focus); outline-offset: 2px; }
+}
+
 #main-nav {
   display: none;
   flex-basis: 100%;
@@ -217,6 +246,7 @@ header { font-family: 'Allerta', 'Helvetica Neue', Helvetica, Arial, serif; }
 
 @media (min-width: $breakpoint-md) {
   .nav-toggle { display: none; }
+  .theme-toggle { order: 1; margin-right: 0; }
   .nav-toggle:checked ~ #main-nav, #main-nav {
     display: flex;
     flex-basis: auto;
@@ -525,7 +555,7 @@ code, pre {
     background: none;
   }
   // only print the page content
-  .nav-toggle, #main-nav, #sidebar { display: none; }
+  .nav-toggle, .theme-toggle, #main-nav, #sidebar { display: none; }
   .site-nav {
     background: none;
     padding: 0;

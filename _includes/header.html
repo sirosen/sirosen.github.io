@@ -3,8 +3,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="fediverse:creator" content="@sirosen@mastodon.social">
 
-  <link rel="stylesheet" href="/assets/hljs/theme-dark.min.css" media="screen and (prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="/assets/hljs/theme-light.min.css" media="print, (prefers-color-scheme: light)">
+  <!-- media queries are rewritten by main.js when a theme is forced -->
+  <link rel="stylesheet" href="/assets/hljs/theme-dark.min.css" id="hljs-dark" media="screen and (prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/hljs/theme-light.min.css" id="hljs-light" media="print, (prefers-color-scheme: light)">
   <script src="/assets/hljs/min.js"></script>
 
   <script src="/assets/main.js"></script>
@@ -18,6 +19,7 @@
 <header>
   <nav class="site-nav" aria-label="Main">
     <a class="site-brand" href="/">Stephen Rosen</a>
+    <button type="button" id="theme-toggle" class="theme-toggle" hidden></button>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu" autocomplete="off">
     <ul id="main-nav">
       <li><a href="/projects">Projects</a></li>
